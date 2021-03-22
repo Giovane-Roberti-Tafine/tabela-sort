@@ -1,0 +1,57 @@
+import { Injectable } from '@angular/core';
+import { SortParameter } from '../model/sort-parameter.model';
+import { orderBy } from 'lodash';
+@Injectable({
+    providedIn: 'root'
+})
+export class SortService {
+    private columns: SortParameter[] = [];
+    private data!: any[];
+    private shouldSort: boolean = false;
+    constructor() { }
+
+    public setColumns(column: SortParameter): void {
+        if (!this.columns.find((c) => c.name === column.name)) {
+            if (!column.priority) {
+                column.priority = this.columns.length + 1;
+            }
+            this.columns.push(column);
+        }
+    }
+
+    public setData(data: any[]): void {
+        this.data = data;
+    }
+
+    public getData(): any[] {
+        return this.data;
+    }
+
+    public orderData(): any[] {
+        if (!this.shouldSort) return this.getData();
+
+        let dataRef = this.data;
+        let indices: string[] = [];
+        let orders: any[] = [];
+        this.columns.map((el, i) => {
+            let index = this.columns.findIndex((c) => c.priority === (i + 1));
+            console.log(this.columns[index]);
+            if (this.columns[index].order) {
+                indices.push(this.columns[index].name);
+                orders.push(this.columns[index].order);
+            }
+        });
+
+        dataRef = orderBy(dataRef, indices, orders);
+        this.shouldSort = !this.shouldSort;
+        return dataRef;
+    }
+
+    public updateData(column: SortParameter): void {
+        let index = this.columns.findIndex((c) => c.name === column.name);
+        this.columns[index] = column;
+        console.log(this.columns[index]);
+
+        this.shouldSort = !this.shouldSort;
+    }
+}
