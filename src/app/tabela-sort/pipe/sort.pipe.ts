@@ -13,11 +13,7 @@ export class SortPipe implements PipeTransform {
 
     transform(value: any[], ...args: unknown[]): any {
         // console.log(value);
-        if (!this.sortService.getData()) {
-            this.sortService.setData(value);
-        }
-
-        return this.sortService.orderData();
+        return this.sortService.orderData(value);
     }
 
 }

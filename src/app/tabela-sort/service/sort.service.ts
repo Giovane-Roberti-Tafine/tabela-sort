@@ -6,7 +6,6 @@ import { orderBy } from 'lodash';
 })
 export class SortService {
     private columns: SortParameter[] = [];
-    private data!: any[];
     private shouldSort: boolean = false;
     constructor() { }
 
@@ -19,18 +18,10 @@ export class SortService {
         }
     }
 
-    public setData(data: any[]): void {
-        this.data = data;
-    }
+    public orderData(data: any[]): any[] {
+        if (!this.shouldSort) return data;
 
-    public getData(): any[] {
-        return this.data;
-    }
-
-    public orderData(): any[] {
-        if (!this.shouldSort) return this.getData();
-
-        let dataRef = this.data;
+        let dataRef = data;
         let indices: string[] = [];
         let orders: any[] = [];
         this.columns.map((el, i) => {
