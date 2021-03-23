@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border: 1px solid rgb(51, 51, 51);
+    border-collapse: collapse;
+    padding: 0 !important;
+    margin: 0 !important;
+    
+    thead {
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: rgb(51, 51, 51);
+        border: none !important;
+        // display: table-cell;
+
+        tr {
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none;
+            width: 100%;
+            position: relative;
+            width: auto;
+
+            td {
+                margin: 0;
+                padding: 5px;
+                border: none;
+                color: #fff;
+                fill: #fff;
+            }
+        }
+        
+    }
+
+    tbody {
+        text-align: center;
+        background: rgb(104, 104, 104);
+    }
+}

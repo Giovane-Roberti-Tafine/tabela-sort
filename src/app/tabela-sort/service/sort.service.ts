@@ -26,7 +26,6 @@ export class SortService {
         let orders: any[] = [];
         this.columns.map((el, i) => {
             let index = this.columns.findIndex((c) => c.priority === (i + 1));
-            console.log(this.columns[index]);
             if (this.columns[index].order) {
                 indices.push(this.columns[index].name);
                 orders.push(this.columns[index].order);
@@ -41,7 +40,6 @@ export class SortService {
     public updateData(column: SortParameter): void {
         let index = this.columns.findIndex((c) => c.name === column.name);
         this.columns[index] = column;
-        console.log(this.columns[index]);
 
         this.shouldSort = !this.shouldSort;
     }
