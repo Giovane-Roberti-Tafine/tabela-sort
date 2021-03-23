@@ -17,11 +17,13 @@ export class SortComponent implements OnInit, AfterViewInit {
     constructor(private sortService: SortService) { }
 
     ngOnInit(): void {
-        this.column = {
-            name: this.nameColumn,
-            order: this.orderColumn,
-        };
-        this.sortService.setColumns(this.column);
+        if (this.nameColumn) {
+            this.column = {
+                name: this.nameColumn,
+                order: this.orderColumn,
+            };
+            this.sortService.setColumns(this.column);
+        }
     }
 
     @HostListener('click', ['$event']) public onSortClick(event: MouseEvent) {
@@ -40,7 +42,7 @@ export class SortComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.ngAfterViewInit();
 
-        });
+        }, 0);
     }
 
     ngAfterViewInit(): void {

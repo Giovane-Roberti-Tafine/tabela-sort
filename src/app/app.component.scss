@@ -7,7 +7,8 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
     margin: 0;
     padding: 0;
 }
@@ -19,12 +20,11 @@ table {
     
     thead {
         background-color: rgb(51, 51, 51);
-
+        
         tr {
-            
+
             th {
                 padding: 5px;
-                border: none;
                 color: rgb(233, 233, 233);
                 fill: rgb(233, 233, 233);
 

@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { Tabela } from './classe/tabela';
+import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
+import { Colunas } from './model/configuracao-modelo.interface';
+import { DynamicPipe } from './pipe/dynamic.pipe';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent extends Tabela {
     title = 'tabela';
     public people = [
         { firstName: 'James', lastName: 'Dean', birthDate: new Date(2012, 5, 1) },
@@ -14,7 +18,12 @@ export class AppComponent {
         { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2015, 6, 12) },
         { firstName: 'Barry', lastName: 'White', birthDate: new Date(2009, 3, 19) },
     ];
-    constructor() {
+    public configuracaoTabela = ConfiguracaoTabela['people'];
+    constructor(pipeDynamic: DynamicPipe) {
+        super(pipeDynamic);
+    }
 
+    public obterValor(person: any, prop: Colunas): string {
+        return this.getValue(person, prop);
     }
 }

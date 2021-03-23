@@ -1,5 +1,5 @@
 <div class="container">
-    <table>
+    <!-- <table>
         <thead>
             <tr>
                 <th sort="firstName" order="asc">First Name</th>
@@ -12,6 +12,24 @@
                 <td>{{ person.firstName }}</td>
                 <td>{{ person.lastName }}</td>
                 <td>{{ person.birthDate | date:'dd-MM-yyyy' }}</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let coluna of configuracaoTabela.colunas" [sort]="coluna.sort? coluna.propriedade: ''"
+                    [order]="coluna.sort? coluna.sort!.order: false">
+                    {{coluna.titulo}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of people | sort">
+                <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)">
+                    <!-- {{person[coluna.propriedade]}} -->
+                </td>
             </tr>
         </tbody>
     </table>

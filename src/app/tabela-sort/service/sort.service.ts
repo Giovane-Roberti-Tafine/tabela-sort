@@ -29,10 +29,8 @@ export class SortService {
                 orders.push(this.columns[index].order);
             }
         });
-        console.log(indices);
-        console.log(orders);
+
         dataRef = orderBy(dataRef, indices, orders);
-        // this.shouldSort = !this.shouldSort;
         return dataRef;
     }
 
