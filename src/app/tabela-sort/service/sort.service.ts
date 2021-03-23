@@ -19,8 +19,6 @@ export class SortService {
     }
 
     public orderData(data: any[]): any[] {
-        if (!this.shouldSort) return data;
-
         let dataRef = data;
         let indices: string[] = [];
         let orders: any[] = [];
@@ -31,9 +29,10 @@ export class SortService {
                 orders.push(this.columns[index].order);
             }
         });
-
+        console.log(indices);
+        console.log(orders);
         dataRef = orderBy(dataRef, indices, orders);
-        this.shouldSort = !this.shouldSort;
+        // this.shouldSort = !this.shouldSort;
         return dataRef;
     }
 

@@ -15,30 +15,22 @@
 table {
     border: 1px solid rgb(51, 51, 51);
     border-collapse: collapse;
-    padding: 0 !important;
-    margin: 0 !important;
+    font-family: Arial, Helvetica, sans-serif;
     
     thead {
-        margin: 0 !important;
-        padding: 0 !important;
         background-color: rgb(51, 51, 51);
-        border: none !important;
-        // display: table-cell;
 
         tr {
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none;
-            width: 100%;
-            position: relative;
-            width: auto;
-
-            td {
-                margin: 0;
+            
+            th {
                 padding: 5px;
                 border: none;
-                color: #fff;
-                fill: #fff;
+                color: rgb(233, 233, 233);
+                fill: rgb(233, 233, 233);
+
+                &:not(:last-child) {
+                    border-right: 1px solid rgb(104, 104, 104);
+                }
             }
         }
         
@@ -47,5 +39,19 @@ table {
     tbody {
         text-align: center;
         background: rgb(104, 104, 104);
+        font-size: 0.85rem;
+        
+        tr {
+            &:nth-child(even) {
+                background-color: #747474;
+            }
+            
+            
+            td {
+                padding: 5px;
+                color: rgb(233, 233, 233);
+            }
+        }
+
     }
 }
