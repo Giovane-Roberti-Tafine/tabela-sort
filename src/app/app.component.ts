@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import * as moment from 'moment';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Tabela } from './classe/tabela';
 import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
 import { Colunas } from './model/configuracao-modelo.interface';
@@ -9,7 +8,8 @@ import { DynamicPipe } from './pipe/dynamic.pipe';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent extends Tabela {
     title = 'tabela';
@@ -17,7 +17,7 @@ export class AppComponent extends Tabela {
         { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
         { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
         { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
-        { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(1994, 6, 12) },
+        { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2021, 6, 12) },
         { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
     ];
     public configuracaoTabela = ConfiguracaoTabela['people'];

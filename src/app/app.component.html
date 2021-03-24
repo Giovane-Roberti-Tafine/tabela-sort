@@ -29,6 +29,7 @@
             <tr *ngFor="let person of people | sort">
                 <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
                     [style.color]="obterColor(person, coluna)">
+
                     <!-- {{person[coluna.propriedade]}} -->
                 </td>
             </tr>

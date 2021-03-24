@@ -11,6 +11,7 @@ export interface Colunas {
     sort?: ColumnSort;
     mascara?: Mascara;
     color?: Mascara;
+    inner?: Mascara;
 }
 
 interface ColumnSort {

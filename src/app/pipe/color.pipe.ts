@@ -1,38 +1,31 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injector, Pipe, PipeTransform } from '@angular/core';
 import * as moment from "moment";
-
-const color: { [index: string]: any; } = {
-    'people': (value: any): string => {
-        moment.locale('pt-br');
-        let now = moment();
-        let birthDate = moment(value);
-        if (now.year() >= birthDate.year()) {
-            if (now.isSame(birthDate, 'day')) {
-                // return '#457878';
-                return '#109890';
-            }
-            if (now.month() === birthDate.month() && now.date() === birthDate.date()) {
-                return '#453070';
-            }
-
-            if (now.month() > birthDate.month() || (now.month() === birthDate.month() && now.date() > birthDate.date())) {
-                return '#232323';
-            }
-            else {
-                return '#505050';
-            }
-        }
-        return '';
-    },
-};
+import { PeopleBirthdate } from '../enum/people-birthdate.enum';
+import { PeopleService } from '../service/people.service';
 
 @Pipe({
     name: 'color'
 })
 export class ColorPipe implements PipeTransform {
 
+    private color: { [index: string]: any; } = {
+        'people': (value: any): string => {
+            const valueColor: { [index: string]: string; } = {
+                [PeopleBirthdate.isSame]: '#109890',
+                [PeopleBirthdate.isBirthDay]: '#453070',
+                [PeopleBirthdate.isBefore]: '#232323',
+                [PeopleBirthdate.isAfter]: '#505050',
+                // '': ''
+            };
+
+            return valueColor[this.peopleService.verifyBirthDate(value)];
+        },
+    };
+
+    constructor(private peopleService: PeopleService) { }
+
     transform<T>(value: T, args: string): string {
-        return color[args](value);
+        return this.color[args](value);
     }
 
 }

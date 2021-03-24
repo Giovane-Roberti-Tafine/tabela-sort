@@ -8,6 +8,8 @@ import { SortService } from './tabela-sort/service/sort.service';
 import { DynamicPipe } from './pipe/dynamic.pipe';
 import { DatePipe } from '@angular/common';
 import { ColorPipe } from './pipe/color.pipe';
+import { InnerPipe } from "./pipe/inner.pipe";
+import { PeopleService } from './service/people.service';
 
 @NgModule({
     declarations: [
@@ -16,6 +18,7 @@ import { ColorPipe } from './pipe/color.pipe';
         SortPipe,
         DynamicPipe,
         ColorPipe,
+        InnerPipe
     ],
     imports: [
         BrowserModule,
@@ -24,7 +27,9 @@ import { ColorPipe } from './pipe/color.pipe';
         DatePipe,
         SortService,
         DynamicPipe,
-        ColorPipe
+        PeopleService,
+        ColorPipe,
+        InnerPipe
     ],
     bootstrap: [AppComponent]
 })

@@ -11,6 +11,10 @@ export class Tabela {
             val = this.mascara(value[prop.propriedade], prop.mascara);
         }
 
+        if (prop.inner) {
+            val = this.mascara(value[prop.propriedade], prop.inner);
+        }
+
         return val;
     }
 
