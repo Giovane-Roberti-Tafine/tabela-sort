@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
 import { Tabela } from './classe/tabela';
 import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
 import { Colunas } from './model/configuracao-modelo.interface';
+import { People } from './model/people.model';
 import { DynamicPipe } from './pipe/dynamic.pipe';
 
 @Component({
@@ -11,9 +13,9 @@ import { DynamicPipe } from './pipe/dynamic.pipe';
 })
 export class AppComponent extends Tabela {
     title = 'tabela';
-    public people = [
-        { firstName: 'James', lastName: 'Dean', birthDate: new Date(2012, 5, 1) },
-        { firstName: 'John', lastName: 'Smith', birthDate: new Date(2012, 5, 12) },
+    public people: People[] = [
+        { firstName: 'James', lastName: 'Dean', birthDate: new Date(2021, 5, 1) },
+        { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
         { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
         { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2015, 6, 12) },
         { firstName: 'Barry', lastName: 'White', birthDate: new Date(2009, 3, 19) },
@@ -23,7 +25,11 @@ export class AppComponent extends Tabela {
         super(pipeDynamic);
     }
 
-    public obterValor(person: any, prop: Colunas): string {
-        return this.getValue(person, prop);
+    public obterValor(person: People, prop: Colunas): string {
+        return this.getValue<People>(person, prop);
+    }
+
+    public obterColor(person: People, prop: Colunas) {
+        return this.getColor<People>(person, prop);
     }
 }

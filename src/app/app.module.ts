@@ -7,6 +7,7 @@ import { SortPipe } from './tabela-sort/pipe/sort.pipe';
 import { SortService } from './tabela-sort/service/sort.service';
 import { DynamicPipe } from './pipe/dynamic.pipe';
 import { DatePipe } from '@angular/common';
+import { ColorPipe } from './pipe/color.pipe';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { DatePipe } from '@angular/common';
         SortComponent,
         SortPipe,
         DynamicPipe,
+        ColorPipe,
     ],
     imports: [
         BrowserModule,
@@ -22,6 +24,7 @@ import { DatePipe } from '@angular/common';
         DatePipe,
         SortService,
         DynamicPipe,
+        ColorPipe
     ],
     bootstrap: [AppComponent]
 })

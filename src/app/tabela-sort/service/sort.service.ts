@@ -16,6 +16,7 @@ export class SortService {
             }
             this.columns.push(column);
         }
+        console.log(this.columns);
     }
 
     public orderData(data: any[]): any[] {

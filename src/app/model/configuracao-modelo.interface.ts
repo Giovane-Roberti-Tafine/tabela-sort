@@ -1,3 +1,5 @@
+import { ColorPipe } from "../pipe/color.pipe";
+
 export interface TabelaModelo {
     colunas: Colunas[];
 }
@@ -8,6 +10,7 @@ export interface Colunas {
     tipo?: string;
     sort?: ColumnSort;
     mascara?: Mascara;
+    color?: Mascara;
 }
 
 interface ColumnSort {
@@ -17,5 +20,5 @@ interface ColumnSort {
 
 export interface Mascara {
     tokenPipe: any;
-    args?: string[];
+    args?: string[] | string;
 }

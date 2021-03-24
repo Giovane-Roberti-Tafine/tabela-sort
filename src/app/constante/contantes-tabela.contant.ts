@@ -1,5 +1,6 @@
 import { DatePipe } from "@angular/common";
 import { TabelaModelo } from "../model/configuracao-modelo.interface";
+import { ColorPipe } from "../pipe/color.pipe";
 
 export const ConfiguracaoTabela: { [id: string]: TabelaModelo; } = {
     'people': {
@@ -24,6 +25,10 @@ export const ConfiguracaoTabela: { [id: string]: TabelaModelo; } = {
                 mascara: {
                     tokenPipe: DatePipe,
                     args: ['dd/MM/yyyy']
+                },
+                color: {
+                    tokenPipe: ColorPipe,
+                    args: 'people'
                 }
             }
         ]

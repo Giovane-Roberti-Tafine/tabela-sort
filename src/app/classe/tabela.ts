@@ -1,16 +1,28 @@
-import { Colunas } from "../model/configuracao-modelo.interface";
+import { Colunas, Mascara } from "../model/configuracao-modelo.interface";
 import { DynamicPipe } from "../pipe/dynamic.pipe";
 
 export class Tabela {
 
     constructor(protected pipeDynamic: DynamicPipe) { }
 
-    protected getValue(value: any, prop: Colunas): string {
+    protected getValue<T>(value: T, prop: Colunas): string {
+        let val = value[prop.propriedade];
         if (prop.mascara) {
-            return this.pipeDynamic.transform(value[prop.propriedade], prop.mascara);
+            val = this.mascara(value[prop.propriedade], prop.mascara);
         }
 
-        return value[prop.propriedade];
+        return val;
+    }
+
+    protected getColor<T>(value: T, prop: Colunas): string {
+        if (prop.color) {
+            return this.mascara(value[prop.propriedade], prop.color);
+        }
+        return '';
+    }
+
+    protected mascara<T>(value: T, mascara: Mascara): string {
+        return this.pipeDynamic.transform(value, mascara);
     }
 
 }
