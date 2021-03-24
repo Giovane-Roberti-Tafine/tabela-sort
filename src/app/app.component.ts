@@ -14,15 +14,16 @@ import { DynamicPipe } from './pipe/dynamic.pipe';
 export class AppComponent extends Tabela {
     title = 'tabela';
     public people: People[] = [
-        { firstName: 'James', lastName: 'Dean', birthDate: new Date(2021, 5, 1) },
+        { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
         { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
         { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
-        { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2015, 6, 12) },
-        { firstName: 'Barry', lastName: 'White', birthDate: new Date(2009, 3, 19) },
+        { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(1994, 6, 12) },
+        { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
     ];
     public configuracaoTabela = ConfiguracaoTabela['people'];
     constructor(pipeDynamic: DynamicPipe) {
         super(pipeDynamic);
+
     }
 
     public obterValor(person: People, prop: Colunas): string {

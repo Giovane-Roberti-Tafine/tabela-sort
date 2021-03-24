@@ -2,11 +2,26 @@ import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from "moment";
 
 const color: { [index: string]: any; } = {
-    'people': (value: any) => {
-        let now = moment.now();
-        if (moment(value).isSame(now, 'day')) { return '#457878'; }
-        if (moment(value).isAfter(now)) { return '#232323'; }
-        if (moment(value).isBefore(now)) { return '#505050'; }
+    'people': (value: any): string => {
+        moment.locale('pt-br');
+        let now = moment();
+        let birthDate = moment(value);
+        if (now.year() >= birthDate.year()) {
+            if (now.isSame(birthDate, 'day')) {
+                // return '#457878';
+                return '#109890';
+            }
+            if (now.month() === birthDate.month() && now.date() === birthDate.date()) {
+                return '#453070';
+            }
+
+            if (now.month() > birthDate.month() || (now.month() === birthDate.month() && now.date() > birthDate.date())) {
+                return '#232323';
+            }
+            else {
+                return '#505050';
+            }
+        }
         return '';
     },
 };
