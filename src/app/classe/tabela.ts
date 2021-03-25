@@ -11,9 +11,10 @@ export class Tabela {
             val = this.mascara(value[prop.propriedade], prop.mascara);
         }
 
-        if (prop.inner) {
-            val = this.mascara(value[prop.propriedade], prop.inner);
-        }
+        if (prop.inner) return '';
+        // if (prop.inner) {
+        //     val = this.mascara(value[prop.propriedade], prop.inner);
+        // }
 
         return val;
     }
@@ -22,6 +23,15 @@ export class Tabela {
         if (prop.color) {
             return this.mascara(value[prop.propriedade], prop.color);
         }
+        return '';
+    }
+
+    protected getClass<T>(value: T, prop: Colunas): string {
+        if (prop.inner) {
+            console.log(prop.inner);
+            return this.mascara(value[prop.propriedade], prop.inner);
+        }
+
         return '';
     }
 

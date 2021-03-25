@@ -11,6 +11,7 @@ export class SortComponent implements OnInit, AfterViewInit {
     column!: SortParameter;
     @Input('sort') public nameColumn!: string;
     @Input('order') public orderColumn: SortParameter["order"] = false;
+    @Input('nameTable') public nameTable?: string = '';
     @ViewChild('iconInicial', { read: ElementRef }) public iconInicial!: ElementRef<HTMLSpanElement>;
     @ViewChild('iconAsc', { read: ElementRef }) public iconAsc!: ElementRef<HTMLSpanElement>;
     @ViewChild('iconDesc', { read: ElementRef }) public iconDesc!: ElementRef<HTMLSpanElement>;
@@ -22,13 +23,13 @@ export class SortComponent implements OnInit, AfterViewInit {
                 name: this.nameColumn,
                 order: this.orderColumn,
             };
-            this.sortService.setColumns(this.column);
+            this.sortService.setColumns(this.column, this.nameTable);
         }
     }
 
     @HostListener('click', ['$event']) public onSortClick(event: MouseEvent) {
         this.nextOrder();
-        this.sortService.updateData(this.column);
+        this.sortService.updateData(this.column, this.nameTable);
     }
 
     private nextOrder(): void {

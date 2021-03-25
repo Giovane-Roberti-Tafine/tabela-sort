@@ -1,4 +1,4 @@
-import { Inject, Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import { SortService } from '../service/sort.service';
 
 @Pipe({
@@ -6,14 +6,13 @@ import { SortService } from '../service/sort.service';
     pure: false
 })
 export class SortPipe implements PipeTransform {
-
     constructor(private sortService: SortService) {
 
     }
 
-    transform(value: any[], ...args: unknown[]): any {
+    transform(value: any[], nameTable: string = ''): any {
         // console.log(value);
-        return this.sortService.orderData(value);
+        return this.sortService.orderData(value, nameTable);
     }
 
 }

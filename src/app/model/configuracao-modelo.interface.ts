@@ -1,5 +1,3 @@
-import { ColorPipe } from "../pipe/color.pipe";
-
 export interface TabelaModelo {
     colunas: Colunas[];
 }

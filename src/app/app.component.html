@@ -1,37 +1,37 @@
 <div class="container">
-    <!-- <table>
+    <table>
         <thead>
             <tr>
-                <th sort="firstName" order="asc">First Name</th>
-                <th sort="lastName">Last Name</th>
-                <th sort="birthDate" order="desc">Birth Date</th>
+                <th sort="firstName" nameTable="trad" order="asc">First Name</th>
+                <th sort="lastName" nameTable="trad">Last Name</th>
+                <th sort="birthDate" nameTable="trad" order="desc">Birth Date</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let person of people | sort">
+            <tr *ngFor="let person of people | sort: 'trad'">
                 <td>{{ person.firstName }}</td>
                 <td>{{ person.lastName }}</td>
                 <td>{{ person.birthDate | date:'dd-MM-yyyy' }}</td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
 
     <table>
         <thead>
             <tr>
                 <th *ngFor="let coluna of configuracaoTabela.colunas" [sort]="coluna.sort? coluna.propriedade: ''"
-                    [order]="coluna.sort? coluna.sort!.order: false">
+                    [order]="coluna.sort? coluna.sort!.order: false" nameTable="object">
                     {{coluna.titulo}}
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let person of people | sort">
+            <tr *ngFor="let person of people | sort: 'object'">
                 <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
-                    [style.color]="obterColor(person, coluna)">
-
+                    [style.color]="obterColor(person, coluna)" [ngClass]="obterClass(person, coluna)">
                     <!-- {{person[coluna.propriedade]}} -->
                 </td>
+
             </tr>
         </tbody>
     </table>

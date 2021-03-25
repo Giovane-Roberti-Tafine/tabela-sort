@@ -5,29 +5,41 @@ import { orderBy } from 'lodash';
     providedIn: 'root'
 })
 export class SortService {
-    private columns: SortParameter[] = [];
+    private columns: { [index: string]: SortParameter[]; } = {};
     private shouldSort: boolean = false;
     constructor() { }
 
-    public setColumns(column: SortParameter): void {
-        if (!this.columns.find((c) => c.name === column.name)) {
-            if (!column.priority) {
-                column.priority = this.columns.length + 1;
+    public setColumns(column: SortParameter, nameTable: string): void {
+        if (this.columns[nameTable]) {
+            if (!this.columns[nameTable].find((c) => c.name === column.name)) {
+                if (!column.priority) {
+                    column.priority = this.columns[nameTable].length + 1;
+                }
+                this.columns[nameTable].push(column);
             }
-            this.columns.push(column);
+        } else {
+            if (!column.priority) {
+                column.priority = 1;
+            }
+            this.columns[nameTable] = [
+                {
+                    ...column
+                }
+            ];
         }
-        console.log(this.columns);
+
+        // console.log(this.columns);
     }
 
-    public orderData(data: any[]): any[] {
+    public orderData(data: any[], nameTable: string): any[] {
         let dataRef = data;
         let indices: string[] = [];
         let orders: any[] = [];
-        this.columns.map((el, i) => {
-            let index = this.columns.findIndex((c) => c.priority === (i + 1));
-            if (this.columns[index].order) {
-                indices.push(this.columns[index].name);
-                orders.push(this.columns[index].order);
+        this.columns[nameTable]?.map((el, i) => {
+            let index = this.columns[nameTable].findIndex((c) => c.priority === (i + 1));
+            if (this.columns[nameTable][index].order) {
+                indices.push(this.columns[nameTable][index].name);
+                orders.push(this.columns[nameTable][index].order);
             }
         });
 
@@ -35,9 +47,9 @@ export class SortService {
         return dataRef;
     }
 
-    public updateData(column: SortParameter): void {
-        let index = this.columns.findIndex((c) => c.name === column.name);
-        this.columns[index] = column;
+    public updateData(column: SortParameter, nameTable: string): void {
+        let index = this.columns[nameTable].findIndex((c) => c.name === column.name);
+        this.columns[nameTable][index] = column;
 
         this.shouldSort = !this.shouldSort;
     }

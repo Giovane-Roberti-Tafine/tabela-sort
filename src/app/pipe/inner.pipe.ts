@@ -10,13 +10,13 @@ export class InnerPipe implements PipeTransform {
     private color: { [index: string]: any; } = {
         'people': (value: any): string => {
             const valueColor: { [index: string]: string; } = {
-                [PeopleBirthdate.isSame]: `<span class="people-birthdate ${PeopleBirthdate[PeopleBirthdate.isSame]}"></span>`,
-                [PeopleBirthdate.isBirthDay]: `<span class="people-birthdate ${PeopleBirthdate[PeopleBirthdate.isBirthDay]}"></span>`,
-                [PeopleBirthdate.isBefore]: `<span class="people-birthdate ${PeopleBirthdate[PeopleBirthdate.isBefore]}"></span>`,
-                [PeopleBirthdate.isAfter]: `<span class="people-birthdate ${PeopleBirthdate[PeopleBirthdate.isAfter]}"></span>`,
-                '': `<span class="people-birthdate"></span>`
+                [PeopleBirthdate.isSame]: `people-birthdate ${PeopleBirthdate[PeopleBirthdate.isSame]}`,
+                [PeopleBirthdate.isBirthDay]: `people-birthdate ${PeopleBirthdate[PeopleBirthdate.isBirthDay]}`,
+                [PeopleBirthdate.isBefore]: `people-birthdate ${PeopleBirthdate[PeopleBirthdate.isBefore]}`,
+                [PeopleBirthdate.isAfter]: `people-birthdate ${PeopleBirthdate[PeopleBirthdate.isAfter]}`,
+                '': `people-birthdate`
             };
-
+            console.log(valueColor[this.servicePeople.verifyBirthDate(value)]);
             return valueColor[this.servicePeople.verifyBirthDate(value)];
         },
     };

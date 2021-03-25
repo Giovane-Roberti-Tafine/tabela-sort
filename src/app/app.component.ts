@@ -9,7 +9,6 @@ import { DynamicPipe } from './pipe/dynamic.pipe';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent extends Tabela {
     title = 'tabela';
@@ -21,6 +20,7 @@ export class AppComponent extends Tabela {
         { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
     ];
     public configuracaoTabela = ConfiguracaoTabela['people'];
+
     constructor(pipeDynamic: DynamicPipe) {
         super(pipeDynamic);
 
@@ -32,5 +32,9 @@ export class AppComponent extends Tabela {
 
     public obterColor(person: People, prop: Colunas) {
         return this.getColor<People>(person, prop);
+    }
+
+    public obterClass(person: People, prop: Colunas): string {
+        return this.getClass<People>(person, prop);
     }
 }
