@@ -16,10 +16,12 @@
                 <td [ngClass]="obterClass(person, colunaAniversario)"></td>
                 <td>{{ person.firstName }}</td>
                 <td>{{ person.lastName }}</td>
-                <td [style.color]="obterColor(person, colunaBirthDate)">{{ person.birthDate | date:'dd-MM-yyyy' }}</td>
+                <td [style.color]="obterColor(person, colunaBirthDate)"
+                    [innerHTML]="obterValor(person, colunaBirthDate)">{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
             </tr>
         </tfoot>
     </table>
+
 
     <table>
         <thead>

@@ -1,16 +1,17 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Tabela } from './classe/tabela';
 import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
 import { Colunas } from './model/configuracao-modelo.interface';
 import { People } from './model/people.model';
 import { DynamicPipe } from './pipe/dynamic.pipe';
+import { PeopleService } from './service/people.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent extends Tabela {
+export class AppComponent extends Tabela implements OnInit {
     title = 'tabela';
     public people: People[] = [
         { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
@@ -21,9 +22,23 @@ export class AppComponent extends Tabela {
     ];
     public configuracaoTabela = ConfiguracaoTabela['people'];
 
-    constructor(pipeDynamic: DynamicPipe) {
+    constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
         super(pipeDynamic);
 
+    }
+
+    ngOnInit(): void {
+        // this.getPeoples();
+    }
+
+    private getPeoples(): void {
+        this.peopleService.getPeoples()
+            .subscribe(
+                (response) => {
+                    console.log(response);
+                    this.people = response;
+                }
+            );
     }
 
     public obterValor(person: People, prop: Colunas): string {

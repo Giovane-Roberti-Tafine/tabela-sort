@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { ColorPipe } from './pipe/color.pipe';
 import { InnerPipe } from "./pipe/inner.pipe";
 import { PeopleService } from './service/people.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { PeopleService } from './service/people.service';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule
     ],
     providers: [
         DatePipe,
