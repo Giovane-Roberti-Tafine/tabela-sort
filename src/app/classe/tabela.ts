@@ -28,7 +28,6 @@ export class Tabela {
 
     protected getClass<T>(value: T, prop: Colunas): string {
         if (prop.inner) {
-            console.log(prop.inner);
             return this.mascara(value[prop.propriedade], prop.inner);
         }
 

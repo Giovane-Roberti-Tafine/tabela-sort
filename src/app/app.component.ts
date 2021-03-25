@@ -37,4 +37,7 @@ export class AppComponent extends Tabela {
     public obterClass(person: People, prop: Colunas): string {
         return this.getClass<People>(person, prop);
     }
+
+    get colunaBirthDate() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Birth Date'); }
+    get colunaAniversario() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Aniversário'); }
 }

@@ -16,7 +16,7 @@ export class InnerPipe implements PipeTransform {
                 [PeopleBirthdate.isAfter]: `people-birthdate ${PeopleBirthdate[PeopleBirthdate.isAfter]}`,
                 '': `people-birthdate`
             };
-            console.log(valueColor[this.servicePeople.verifyBirthDate(value)]);
+
             return valueColor[this.servicePeople.verifyBirthDate(value)];
         },
     };

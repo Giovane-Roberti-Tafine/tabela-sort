@@ -40,17 +40,17 @@ export class SortComponent implements OnInit, AfterViewInit {
         } else if (this.column.order === false) {
             this.column.order = 'asc';
         }
-        setTimeout(() => {
-            this.ngAfterViewInit();
+        // setTimeout(() => {
+        //     this.ngAfterViewInit();
 
-        }, 0);
+        // }, 0);
     }
 
     ngAfterViewInit(): void {
         // console.log(this.iconDesc?.nativeElement.style.width);
-        this.iconInicial?.nativeElement.offsetWidth ? '' : this.iconInicial?.nativeElement.style.setProperty('display', 'none');
-        this.iconAsc?.nativeElement.offsetWidth ? '' : this.iconAsc?.nativeElement.style.setProperty('display', 'none');
-        this.iconDesc?.nativeElement.offsetWidth ? '' : this.iconDesc?.nativeElement.style.setProperty('display', 'none');
+        // this.iconInicial?.nativeElement.offsetWidth ? '' : this.iconInicial?.nativeElement.style.setProperty('display', 'none');
+        // this.iconAsc?.nativeElement.offsetWidth ? '' : this.iconAsc?.nativeElement.style.setProperty('display', 'none');
+        // this.iconDesc?.nativeElement.offsetWidth ? '' : this.iconDesc?.nativeElement.style.setProperty('display', 'none');
     }
 
 
