@@ -4,26 +4,30 @@
 
 .container {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
-    align-content: stretch;
+    // align-content: stretch;
     // justify-content: center;
-    // align-content: center;
     align-items: center; 
-    flex-flow: column wrap;
+    flex-direction: column;
+    flex-flow: '' wrap;
     gap: 20px 20px;
-    padding: 10px;
-    overflow: auto;
-
+    padding: 20px;
+    margin-bottom: 20px;
+    
+    // overflow: auto;
+    
     &::before, &::after {
         content: '';  /* Insert pseudo-element */
-        margin: auto; /* Make it push flex items to the center */
+        margin: auto ; /* Make it push flex items to the center */
     }
-
+    
     // border: 1px solid red;
 }
 
+
 table {
+    width: 40%;
     border: 1px solid rgb(51, 51, 51);
     border-collapse: collapse;
     font-family: Arial, Helvetica, sans-serif;
@@ -36,17 +40,19 @@ table {
     }
     
     tbody {
-        background-color: rgb(51, 51, 51);
-        
         tr {
-
+            
             th {
+                background-color: rgb(51, 51, 51);
+                position: sticky; 
+                top: 0;
                 padding: 5px;
                 color: rgb(233, 233, 233);
                 fill: rgb(233, 233, 233);
 
                 &:not(:last-child) {
-                    border-right: 1px solid rgb(104, 104, 104);
+                    // border-right: 1px solid rgb(104, 104, 104);
+                    box-shadow: inset -1px 0px 0px rgb(104, 104, 104),
                 }
             }
         }
@@ -54,6 +60,7 @@ table {
     }
 
     tfoot {
+        width: 100%;
         text-align: center;
         background: rgb(104, 104, 104);
         font-size: 0.85rem;

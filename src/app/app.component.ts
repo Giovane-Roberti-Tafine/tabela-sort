@@ -28,7 +28,7 @@ export class AppComponent extends Tabela implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.getPeoples();
+        this.getPeoples();
     }
 
     private getPeoples(): void {
