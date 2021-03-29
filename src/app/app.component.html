@@ -1,48 +1,59 @@
 <div class="container">
-    <table>
-        <thead>
-            <th [attr.colSpan]="configuracaoTabela.colunas.length">Table Tradicional</th>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Aniversário</th>
-                <th sort="firstName" nameTable="trad" order="asc">First Name</th>
-                <th sort="lastName" nameTable="trad">Last Name</th>
-                <th sort="birthDate" nameTable="trad" order="desc">Birth Date</th>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr *ngFor="let person of people | sort: 'trad'">
-                <td [ngClass]="obterClass(person, colunaAniversario)"></td>
-                <td>{{ person.firstName }}</td>
-                <td>{{ person.lastName }}</td>
-                <td [style.color]="obterColor(person, colunaBirthDate)"
-                    [innerHTML]="obterValor(person, colunaBirthDate)">{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <th [attr.colSpan]="configuracaoTabela.colunas.length">Table Tradicional</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Aniversário</th>
+                    <th sort="firstName" nameTable="trad" order="asc" float="left">
+                        First Name
+                    </th>
+                    <th sort="lastName" nameTable="trad" float="right">Last Name</th>
+                    <th sort="birthDate" nameTable="trad" order="desc">Birth Date</th>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngFor="let person of people | sort: 'trad'">
+                    <td [ngClass]="obterClass(person, colunaAniversario)"></td>
+                    <td>{{ person.firstName }}</td>
+                    <td>{{ person.lastName }}</td>
+                    <td [style.color]="obterColor(person, colunaBirthDate)"
+                        [innerHTML]="obterValor(person, colunaBirthDate)">{{ person.birthDate | date:'dd/MM/yyyy' }}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
 
-    <table>
-        <thead>
-            <th [attr.colspan]="configuracaoTabela.colunas.length">Table Objeto</th>
-        </thead>
-        <tbody>
-            <tr>
-                <th *ngFor="let coluna of configuracaoTabela.colunas" [sort]="coluna.sort? coluna.propriedade: ''"
-                    [order]="coluna.sort? coluna.sort!.order: false" nameTable="object">
-                    {{coluna.titulo}}
-                </th>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr *ngFor="let person of people | sort: 'object'">
-                <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
-                    [style.color]="obterColor(person, coluna)" [ngClass]="obterClass(person, coluna)">
-                    <!-- {{person[coluna.propriedade]}} -->
-                </td>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <th [attr.colspan]="configuracaoTabela.colunas.length">Table Objeto</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th *ngFor="let coluna of configuracaoTabela.colunas" [sort]="coluna.sort? coluna.propriedade: ''"
+                        [order]="coluna.sort? coluna.sort!.order: false" nameTable="object">
+                        {{coluna.titulo}}
+                    </th>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngFor="let person of people | sort: 'object'">
+                    <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
+                        [style.color]="obterColor(person, coluna)" [ngClass]="obterClass(person, coluna)">
+                        <!-- {{person[coluna.propriedade]}} -->
+                    </td>
 
-            </tr>
-        </tfoot>
-    </table>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="spinner" *ngIf="spinner">
+        <i class="fas fa-spinner fa-pulse"></i>
+    </div>
 </div>

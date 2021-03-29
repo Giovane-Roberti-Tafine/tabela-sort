@@ -12,10 +12,14 @@ export class SortComponent implements OnInit, AfterViewInit {
     @Input('sort') public nameColumn!: string;
     @Input('order') public orderColumn: SortParameter["order"] = false;
     @Input('nameTable') public nameTable?: string = '';
+    @Input('float') public float?: SortParameter['float'] = 'right';
+
     // @ViewChild('iconInicial', { read: ElementRef }) public iconInicial!: ElementRef<HTMLSpanElement>;
     // @ViewChild('iconAsc', { read: ElementRef }) public iconAsc!: ElementRef<HTMLSpanElement>;
     // @ViewChild('iconDesc', { read: ElementRef }) public iconDesc!: ElementRef<HTMLSpanElement>;
-    constructor(private sortService: SortService) { }
+    @ViewChild('container', { read: ElementRef }) public container!: ElementRef<HTMLSpanElement>;
+    constructor(private sortService: SortService) {
+    }
 
     ngOnInit(): void {
         if (this.nameColumn) {
@@ -47,11 +51,17 @@ export class SortComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        if (!this.float || this.float === 'right') {
+            this.container.nativeElement.style.setProperty('display', 'flex');
+        } else {
+            this.container.nativeElement.style.setProperty('display', 'flex');
+            this.container.nativeElement.style.setProperty('flex-direction', 'row-reverse');
+        }
+
         // console.log(this.iconDesc?.nativeElement.style.width);
         // this.iconInicial?.nativeElement.offsetWidth ? '' : this.iconInicial?.nativeElement.style.setProperty('display', 'none');
         // this.iconAsc?.nativeElement.offsetWidth ? '' : this.iconAsc?.nativeElement.style.setProperty('display', 'none');
         // this.iconDesc?.nativeElement.offsetWidth ? '' : this.iconDesc?.nativeElement.style.setProperty('display', 'none');
     }
-
 
 }

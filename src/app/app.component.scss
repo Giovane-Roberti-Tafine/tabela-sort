@@ -1,36 +1,56 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
+
 * {
     box-sizing: border-box;
 }
 
+
 .container {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: flex;
-    // align-content: stretch;
-    // justify-content: center;
+    // align-content: center;
+    justify-content: center;
     align-items: center; 
     flex-direction: column;
-    flex-flow: '' wrap;
+    // flex-flow: column wrap;
     gap: 20px 20px;
     padding: 20px;
     margin-bottom: 20px;
+    // position: relative;
     
-    // overflow: auto;
     
-    &::before, &::after {
-        content: '';  /* Insert pseudo-element */
-        margin: auto ; /* Make it push flex items to the center */
-    }
+    // &::before, &::after {
+    //     content: '';  /* Insert pseudo-element */
+    //     margin: auto ; /* Make it push flex items to the center */
+    //     padding: auto ; /* Make it push flex items to the center */
+    // }
     
     // border: 1px solid red;
 }
 
+.table-responsive {
+    min-width: 40%;
+    max-width: 90%;
+    max-height: 250px;
+    position: relative;
+    // display: flex;
+    // justify-content: center;
+    overflow: auto;
+    &::-webkit-scrollbar{ 
+        width: 0px;
+    }
+    
+}
 
 table {
-    width: 40%;
+    width: 100%;
+    height: 100%;
     border: 1px solid rgb(51, 51, 51);
     border-collapse: collapse;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+    
 
     thead {
         th {
@@ -44,11 +64,14 @@ table {
             
             th {
                 background-color: rgb(51, 51, 51);
-                position: sticky; 
+                position: -webkit-sticky;
+                position: sticky;
                 top: 0;
                 padding: 5px;
                 color: rgb(233, 233, 233);
                 fill: rgb(233, 233, 233);
+                white-space: nowrap;
+
 
                 &:not(:last-child) {
                     // border-right: 1px solid rgb(104, 104, 104);
@@ -114,3 +137,18 @@ table {
 //     margin: 0 auto;
 //     background-color: #fff;
 // }
+
+.spinner {
+    z-index: 100;
+    position: absolute;
+    // display: block;
+    font-size: 3rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid red;
+    background-color: rgb(35, 35, 35, 0.5);
+    color: #fff;
+}

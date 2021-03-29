@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class PeopleService {
 
-    private readonly apiPeople = 'https://next.json-generator.com/api/json/get/4yrq76BE5';
+    private readonly apiPeople = 'https://next.json-generator.com/api/json/get/4yrq76BE5?indent=2';
 
     constructor(private http: HttpClient) { }
 
@@ -41,7 +41,7 @@ export class PeopleService {
     getPeoples(): Observable<People[]> {
         return this.http.get<People[]>(this.apiPeople)
             .pipe(
-                catchError(this.handleError<People[]>('getHeroes', []))
+                catchError(this.handleError<People[]>('get Peoples', []))
             );
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tabela } from './classe/tabela';
 import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
 import { Colunas } from './model/configuracao-modelo.interface';
@@ -22,9 +22,10 @@ export class AppComponent extends Tabela implements OnInit {
     ];
     public configuracaoTabela = ConfiguracaoTabela['people'];
 
+    public spinner = false;
+
     constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
         super(pipeDynamic);
-
     }
 
     ngOnInit(): void {
@@ -32,9 +33,11 @@ export class AppComponent extends Tabela implements OnInit {
     }
 
     private getPeoples(): void {
+        this.spinner = true;
         this.peopleService.getPeoples()
             .subscribe(
                 (response) => {
+                    this.spinner = false;
                     console.log(response);
                     this.people = response;
                 }
