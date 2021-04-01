@@ -53,9 +53,11 @@ export class SortComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         if (!this.float || this.float === 'right') {
             this.container.nativeElement.style.setProperty('display', 'flex');
+            this.container.nativeElement.style.setProperty('gap', '0.5rem');
         } else {
             this.container.nativeElement.style.setProperty('display', 'flex');
             this.container.nativeElement.style.setProperty('flex-direction', 'row-reverse');
+            this.container.nativeElement.style.setProperty('gap', '0.5rem');
         }
 
         // console.log(this.iconDesc?.nativeElement.style.width);

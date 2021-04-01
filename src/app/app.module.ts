@@ -11,6 +11,10 @@ import { ColorPipe } from './pipe/color.pipe';
 import { InnerPipe } from "./pipe/inner.pipe";
 import { PeopleService } from './service/people.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginatePipe } from './tabela-pagination/paginate.pipe';
+import { PaginationControlsComponent } from './tabela-pagination/pagination-controls.component';
+import { PaginationControlsDirective } from './tabela-pagination/pagination-controls.directive';
+import { PaginationService } from "./tabela-pagination/pagination.service";
 
 @NgModule({
     declarations: [
@@ -19,7 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
         SortPipe,
         DynamicPipe,
         ColorPipe,
-        InnerPipe
+        InnerPipe,
+        PaginatePipe,
+        PaginationControlsComponent,
+        PaginationControlsDirective
     ],
     imports: [
         BrowserModule,
@@ -31,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
         DynamicPipe,
         PeopleService,
         ColorPipe,
-        InnerPipe
+        InnerPipe,
+        PaginationService
     ],
     bootstrap: [AppComponent]
 })

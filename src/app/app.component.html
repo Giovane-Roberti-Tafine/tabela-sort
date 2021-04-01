@@ -27,7 +27,6 @@
         </table>
     </div>
 
-
     <div class="table-responsive">
         <table>
             <thead>
@@ -42,7 +41,7 @@
                 </tr>
             </tbody>
             <tfoot>
-                <tr *ngFor="let person of people | sort: 'object'">
+                <tr *ngFor="let person of people | sort: 'object' | paginate: config">
                     <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
                         [style.color]="obterColor(person, coluna)" [ngClass]="obterClass(person, coluna)">
                         <!-- {{person[coluna.propriedade]}} -->
@@ -53,7 +52,41 @@
         </table>
     </div>
 
+    <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
+
+
+        <div class="custom-pagination" style="display: flex; gap: 5px;">
+            <div class="pagination-previous" style="color: #fff;" [class.disabled]="p.isFirstPage()">
+                <a *ngIf="!p.isFirstPage()" (click)="p.previous()">
+                    < </a>
+            </div>
+
+            <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                <a (click)="p.setCurrent(page.value)" style="color: #ccc" *ngIf="p.getCurrent() !== page.value">
+                    <span>{{ page.label }}</span>
+                </a>
+                <div style="color: aqua;" *ngIf="p.getCurrent() === page.value">
+                    <span>{{ page.label }}</span>
+                </div>
+            </div>
+
+            <div class="pagination-next" style="color: #fff;" [class.disabled]="p.isLastPage()">
+                <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
+            </div>
+        </div>
+
+    </pagination-template>
+
+    <!-- <div class="list">
+        <ul>
+            <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: page }">{{ item }}</li>
+        </ul>
+
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div> -->
+
     <div class="spinner" *ngIf="spinner">
         <i class="fas fa-spinner fa-pulse"></i>
     </div>
+
 </div>
