@@ -7,7 +7,7 @@ export const ConfiguracaoTabela: { [id: string]: TabelaModelo; } = {
     'people': {
         colunas: [
             {
-                titulo: 'Aniversário',
+                titulo: 'Traffic Light',
                 propriedade: 'birthDate',
                 inner: {
                     tokenPipe: InnerPipe,

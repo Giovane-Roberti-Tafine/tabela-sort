@@ -11,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class PeopleService {
 
-    private readonly apiPeople = 'https://next.json-generator.com/api/json/get/4yrq76BE5?indent=2';
+    // private readonly apiPeople = 'https://next.json-generator.com/api/json/get/4yrq76BE5?indent=2';
+    private readonly apiPeople = 'https://606b10b6f8678400172e5826.mockapi.io/api/people';
 
     constructor(private http: HttpClient) { }
 

@@ -10,29 +10,27 @@
     height: 100%;
     display: flex;
     // align-content: center;
-    justify-content: center;
+    // justify-content: center;
     align-items: center; 
     flex-direction: column;
     // flex-flow: column wrap;
     gap: 20px 20px;
-    padding: 20px;
+    // padding: 20px;
     margin-bottom: 20px;
-    // position: relative;
     
-    
-    // &::before, &::after {
-    //     content: '';  /* Insert pseudo-element */
-    //     margin: auto ; /* Make it push flex items to the center */
-    //     padding: auto ; /* Make it push flex items to the center */
-    // }
+    &::before, &::after {
+        content: '';  /* Insert pseudo-element */
+        margin: auto ; /* Make it push flex items to the center */
+        // padding: auto ; /* Make it push flex items to the center */
+    }
     
     // border: 1px solid red;
 }
 
 .table-responsive {
     min-width: 40%;
-    max-width: 90%;
     max-height: 250px;
+    // min-height: 250px;
     position: relative;
     // display: flex;
     // justify-content: center;
@@ -40,7 +38,16 @@
     &::-webkit-scrollbar{ 
         width: 0px;
     }
+
     
+    
+}
+
+@media only screen and (max-width: 1100px) {
+    .table-responsive { 
+        width: 80%;
+    }
+
 }
 
 table {
@@ -61,7 +68,7 @@ table {
     
     tbody {
         tr {
-            
+
             th {
                 background-color: rgb(51, 51, 51);
                 position: -webkit-sticky;
@@ -72,7 +79,7 @@ table {
                 fill: rgb(233, 233, 233);
                 white-space: nowrap;
 
-
+                
                 &:not(:last-child) {
                     // border-right: 1px solid rgb(104, 104, 104);
                     box-shadow: inset -1px 0px 0px rgb(104, 104, 104),

@@ -25,7 +25,7 @@ export class AppComponent extends Tabela implements OnInit {
     public spinner = false;
 
     public collection: string[] = [];
-    page: number = 1;
+    public currentPage: number = 1;
 
     public config: any = {
         id: 'custom',
@@ -35,15 +35,16 @@ export class AppComponent extends Tabela implements OnInit {
 
     constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
         super(pipeDynamic);
-        console.log(this.createPageArray(5, 10, 100, 8));
+        console.log(this.createPageArray(1, 10, 60, 5));
 
-        for (let i = 1; i <= 100; i++) {
-            this.collection.push(`item ${i}`);
-        }
+        // for (let i = 1; i <= 100; i++) {
+        //     this.collection.push(`item ${i}`);
+        // }
     }
 
     ngOnInit(): void {
         this.getPeoples();
+        this.getPage(1);
     }
 
     private getPeoples(): void {
@@ -53,9 +54,20 @@ export class AppComponent extends Tabela implements OnInit {
                 (response) => {
                     this.spinner = false;
                     console.log(response);
-                    this.people = response;
+                    this.people = response["data"];
                 }
             );
+
+    }
+
+    public getPage(page: number): string[] {
+        this.currentPage = page;
+        this.collection = [];
+        for (let i = 1; i <= 10; i++) {
+            this.collection.push(`item ${i + ((page * 10) - 10)}`);
+        }
+
+        return this.collection;
     }
 
     public obterValor(person: People, prop: Colunas): string {
@@ -71,7 +83,7 @@ export class AppComponent extends Tabela implements OnInit {
     }
 
     get colunaBirthDate() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Birth Date'); }
-    get colunaAniversario() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Aniversário'); }
+    get colunaTrafficLight() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Traffic Light'); }
 
     private createPageArray(currentPage: number, itemsPerPage: number, totalItems: number, paginationRange: number): any[] {
         // paginationRange could be a string if passed from attribute, so cast to number.
