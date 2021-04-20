@@ -30,12 +30,18 @@ export class AppComponent extends Tabela implements OnInit {
     public config: any = {
         id: 'custom',
         itemsPerPage: 10,
+        currentPage: 3
+    };
+
+    public config2: any = {
+        id: 'Hey',
+        itemsPerPage: 10,
         currentPage: 1
     };
 
     constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
         super(pipeDynamic);
-        console.log(this.createPageArray(1, 10, 60, 5));
+        // console.log(this.createPageArray(1, 10, 60, 5));
 
         // for (let i = 1; i <= 100; i++) {
         //     this.collection.push(`item ${i}`);
