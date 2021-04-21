@@ -14,7 +14,6 @@ export class PaginationControlsDirective implements OnInit {
     constructor(private paginationService: PaginationService, private cdr: ChangeDetectorRef) {
         this.paginationService.collectionSubject$.subscribe(
             (response) => {
-                console.log(response);
                 this.updateList();
             }
         );
@@ -95,18 +94,17 @@ export class PaginationControlsDirective implements OnInit {
                 list.push({ label: '' + i, value: i });
             } else
                 if (isMiddle) {
-                    list.push({ label: '' + (currentPage - halfWay - 1) + i, value: (currentPage - halfWay - 1) + i });
+                    list.push({ label: '' + ((currentPage - halfWay - 1) + i), value: ((currentPage - halfWay - 1) + i) });
                 } else
                     if (isStart) {
                         list.push({ label: '' + i, value: i });
                     } else
                         if (isEnd) {
-                            list.push({ label: '' + (totalPages - range) + i, value: (totalPages - range) + i });
+                            list.push({ label: '' + ((totalPages - range) + i), value: ((totalPages - range) + i) });
                         }
 
         }
 
-        // console.log(list);
         return list;
     }
 
