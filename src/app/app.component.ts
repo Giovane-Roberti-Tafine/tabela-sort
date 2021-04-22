@@ -1,46 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Tabela } from './classe/tabela';
-import { ConfiguracaoTabela } from './constante/contantes-tabela.contant';
-import { Colunas } from './model/configuracao-modelo.interface';
-import { People } from './model/people.model';
-import { DynamicPipe } from './pipe/dynamic.pipe';
-import { PeopleService } from './service/people.service';
+import { Tabela } from './classes/tabela';
+import { ConfiguracaoTabela } from './constants/contantes-tabela.contant';
+import { Colunas } from './models/configuracao-modelo.interface';
+import { People } from './models/people.model';
+import { DynamicPipe } from './pipes/dynamic.pipe';
+import { PeopleService } from './services/people.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent extends Tabela implements OnInit {
-    title = 'tabela';
-    public people: People[] = [
-        { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
-        { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
-        { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
-        { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2021, 6, 12) },
-        { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
-    ];
-    public configuracaoTabela = ConfiguracaoTabela['people'];
+export class AppComponent implements OnInit {
+    // title = 'tabela';
+    // public people: People[] = [
+    //     { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
+    //     { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
+    //     { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
+    //     { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2021, 6, 12) },
+    //     { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
+    // ];
 
-    public spinner = false;
+    // public peoplePaginate: People[] = [];
 
-    public collection: string[] = [];
-    public currentPage: number = 1;
+    // public configuracaoTabela = ConfiguracaoTabela['people'];
 
-    public config: any = {
-        id: 'custom',
-        itemsPerPage: 10,
-        currentPage: 3
-    };
+    // public spinner = false;
 
-    public config2: any = {
-        id: 'Hey',
-        itemsPerPage: 10,
-        currentPage: 1
-    };
+    // public collection: string[] = [];
+    // public currentPage: number = 1;
 
-    constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
-        super(pipeDynamic);
+    // public config: any = {
+    //     id: 'custom',
+    //     itemsPerPage: 10,
+    //     currentPage: 3
+    // };
+
+    // public config2: any = {
+    //     id: 'Hey',
+    //     itemsPerPage: 10,
+    //     currentPage: 1
+    // };
+
+    constructor() {
         // console.log(this.createPageArray(1, 10, 60, 5));
 
         // for (let i = 1; i <= 100; i++) {
@@ -49,47 +51,61 @@ export class AppComponent extends Tabela implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getPeoples();
-        this.getPage(1);
+        // this.getPeoples();
+        // this.getPeoplesPaginate();
+        // this.getPage(1);
     }
 
-    private getPeoples(): void {
-        this.spinner = true;
-        this.peopleService.getPeoples()
-            .subscribe(
-                (response) => {
-                    this.spinner = false;
-                    console.log(response);
-                    this.people = response["data"];
-                }
-            );
+    // private getPeoples(): void {
+    //     this.spinner = true;
+    //     this.peopleService.getPeoples()
+    //         .subscribe(
+    //             (response) => {
+    //                 this.spinner = false;
+    //                 console.log(response);
+    //                 this.people = response["data"];
 
-    }
+    //                 this.config.totalItems = response['count'];
+    //             }
+    //         );
+    // }
 
-    public getPage(page: number): string[] {
-        this.currentPage = page;
-        this.collection = [];
-        for (let i = 1; i <= 10; i++) {
-            this.collection.push(`item ${i + ((page * 10) - 10)}`);
-        }
+    // private getPeoplesPaginate(): void {
+    //     this.spinner = true;
+    //     this.peopleService.getPeoplesPaginate(this.config.currentPage, this.config.itemsPerPage)
+    //         .subscribe(
+    //             (response) => {
+    //                 this.spinner = false;
+    //                 this.peoplePaginate = response['data'];
+    //                 console.log(response['data']);
+    //             }
+    //         );
+    // }
 
-        return this.collection;
-    }
+    // public getPage(page: number): string[] {
+    //     this.currentPage = page;
+    //     this.collection = [];
+    //     for (let i = 1; i <= 10; i++) {
+    //         this.collection.push(`item ${i + ((page * 10) - 10)}`);
+    //     }
 
-    public obterValor(person: People, prop: Colunas): string {
-        return this.getValue<People>(person, prop);
-    }
+    //     return this.collection;
+    // }
 
-    public obterColor(person: People, prop: Colunas) {
-        return this.getColor<People>(person, prop);
-    }
+    // public obterValor(person: People, prop: Colunas): string {
+    //     return this.getValue<People>(person, prop);
+    // }
 
-    public obterClass(person: People, prop: Colunas): string {
-        return this.getClass<People>(person, prop);
-    }
+    // public obterColor(person: People, prop: Colunas) {
+    //     return this.getColor<People>(person, prop);
+    // }
 
-    get colunaBirthDate() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Birth Date'); }
-    get colunaTrafficLight() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Traffic Light'); }
+    // public obterClass(person: People, prop: Colunas): string {
+    //     return this.getClass<People>(person, prop);
+    // }
+
+    // get colunaBirthDate() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Birth Date'); }
+    // get colunaTrafficLight() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Traffic Light'); }
 
     private createPageArray(currentPage: number, itemsPerPage: number, totalItems: number, paginationRange: number): any[] {
         // paginationRange could be a string if passed from attribute, so cast to number.

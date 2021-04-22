@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Observable, of } from 'rxjs';
-import { PeopleBirthdate } from '../enum/people-birthdate.enum';
-import { People } from '../model/people.model';
+import { PeopleBirthdate } from '../enums/people-birthdate.enum';
+import { People } from '../models/people.model';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 export class PeopleService {
 
     // private readonly apiPeople = 'https://next.json-generator.com/api/json/get/4yrq76BE5?indent=2';
-    private readonly apiPeople = 'https://606b10b6f8678400172e5826.mockapi.io/api/people';
+    private readonly apiPeople = 'https://6081752273292b0017cdd954.mockapi.io/api/people';
 
     constructor(private http: HttpClient) { }
 
@@ -43,6 +43,13 @@ export class PeopleService {
         return this.http.get<People[]>(this.apiPeople)
             .pipe(
                 catchError(this.handleError<People[]>('get Peoples', []))
+            );
+    }
+
+    getPeoplesPaginate(currentPage: number, perPage: number): Observable<People[]> {
+        return this.http.get<People[]>(`${this.apiPeople}?page=${currentPage}&limit=${perPage}`)
+            .pipe(
+                catchError(this.handleError<People[]>('get Peoples Paginate', []))
             );
     }
 

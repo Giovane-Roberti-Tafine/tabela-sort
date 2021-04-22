@@ -1,5 +1,5 @@
-import { Colunas, Mascara } from "../model/configuracao-modelo.interface";
-import { DynamicPipe } from "../pipe/dynamic.pipe";
+import { Colunas, Mascara } from "../models/configuracao-modelo.interface";
+import { DynamicPipe } from "../pipes/dynamic.pipe";
 
 export class Tabela {
 

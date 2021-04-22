@@ -1,5 +1,5 @@
 import { Injector, Pipe, PipeTransform } from '@angular/core';
-import { Mascara } from '../model/configuracao-modelo.interface';
+import { Mascara } from '../models/configuracao-modelo.interface';
 
 @Pipe({
     name: 'dynamic'

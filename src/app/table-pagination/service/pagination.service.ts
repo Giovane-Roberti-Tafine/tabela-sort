@@ -25,6 +25,13 @@ export class PaginationService {
         return this.state[instance.id];
     }
 
+    serverSideMode(collection: any[], instance: PaginationPipeArgs): PipeState {
+        this.state[instance.id] = { instance: instance, collection: collection, size: collection };
+
+        this.collectionSubject$.next(this.state[instance.id]);
+        return this.state[instance.id];
+    }
+
     public getCurrentPage(id: string): number {
         if (this.state[id]) {
             return +this.state[id].instance.currentPage;
@@ -35,5 +42,9 @@ export class PaginationService {
 
     public getInstance(id: string): PaginationPipeArgs {
         return this.state[id]?.instance;
+    }
+
+    public getSize(id: string): any[] {
+        return this.state[id]?.size;
     }
 }

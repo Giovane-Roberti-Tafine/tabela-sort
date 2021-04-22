@@ -1,7 +1,7 @@
 import { DatePipe } from "@angular/common";
-import { TabelaModelo } from "../model/configuracao-modelo.interface";
-import { ColorPipe } from "../pipe/color.pipe";
-import { InnerPipe } from "../pipe/inner.pipe";
+import { TabelaModelo } from "../models/configuracao-modelo.interface";
+import { ColorPipe } from "../pipes/color.pipe";
+import { InnerPipe } from "../pipes/inner.pipe";
 
 export const ConfiguracaoTabela: { [id: string]: TabelaModelo; } = {
     'people': {

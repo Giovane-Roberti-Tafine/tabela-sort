@@ -1,6 +1,6 @@
 import { Injector, Pipe, PipeTransform } from '@angular/core';
-import { PeopleBirthdate } from '../enum/people-birthdate.enum';
-import { PeopleService } from '../service/people.service';
+import { PeopleBirthdate } from '../enums/people-birthdate.enum';
+import { PeopleService } from '../services/people.service';
 
 @Pipe({
     name: 'inner'

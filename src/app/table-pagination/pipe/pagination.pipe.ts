@@ -13,16 +13,35 @@ export class PaginationPipe implements PipeTransform {
 
     constructor(private paginationService: PaginationService) { }
 
-    transform<T, U extends Collection<T>>(value: [], args: PaginationPipeArgs): U {
+    transform<T, U extends Collection<T>>(value: any[], args: PaginationPipeArgs): U {
         let serverSideMode = args.totalItems !== undefined && args.totalItems !== value.length;
+
+        // Verificando se esta utilizando async pipe
+        if (value.length >= 2 && value[0] instanceof Array) {
+            value = value.filter((v, i) => i === 0)[0] as [];
+        }
+
+        // Atribuindo valores em cache para value, 
+        //quando ocorre uma mudança de page
+        //utilizando async pipe
+        if (value.length === 0 || value === null) {
+            let _id = args.id || '';
+            if (this.paginationService.getInstance(_id)) {
+                value = this.paginationService.getSize(_id);
+            } else {
+                value = [];
+            }
+        }
+
         let instance = this.createInstance(value, args);
 
         if (!serverSideMode) {
             return this.paginationService.localSideMode(value, instance).size as U;
 
+        } else {
+            return this.paginationService.serverSideMode(value, instance).collection as U;
         }
 
-        return null;
     }
 
 

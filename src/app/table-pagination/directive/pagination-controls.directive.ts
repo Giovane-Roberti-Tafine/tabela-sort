@@ -33,7 +33,6 @@ export class PaginationControlsDirective implements OnInit {
 
     ngAfterViewInit() {
         this.cdr.detectChanges();
-        this.updateList();
     }
 
     previous() {
