@@ -11,16 +11,12 @@ import { ColorPipe } from './pipes/color.pipe';
 import { InnerPipe } from "./pipes/inner.pipe";
 import { PeopleService } from './services/people.service';
 import { HttpClientModule } from '@angular/common/http';
-// import { PaginatePipe } from './tabela-pagination/paginate.pipe';
-// import { PaginationControlsComponent } from './tabela-pagination/pagination-controls.component';
-// import { PaginationControlsDirective } from './tabela-pagination/pagination-controls.directive';
-// import { PaginationService } from "./tabela-pagination/pagination.service";
 import { PaginationPipe } from './table-pagination/pipe/pagination.pipe';
 import { PaginationControlsDirective } from "./table-pagination/directive/pagination-controls.directive";
-
 import { AppRoutingModule } from './app-routing.module';
 import { DemoComponent } from './pages/demo/page-component/demo.component';
 import { TableObjectComponent } from './pages/demo/components/table-object/table-object.component';
+import { TableTraditionalComponent } from './pages/demo/components/table-traditional/table-traditional.component';
 
 
 @NgModule({
@@ -35,7 +31,8 @@ import { TableObjectComponent } from './pages/demo/components/table-object/table
         PaginationPipe,
         PaginationControlsDirective,
         DemoComponent,
-        TableObjectComponent
+        TableObjectComponent,
+        TableTraditionalComponent
     ],
     imports: [
         BrowserModule,
