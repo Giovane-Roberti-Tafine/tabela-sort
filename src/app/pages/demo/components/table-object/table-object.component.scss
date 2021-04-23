@@ -5,6 +5,8 @@
     font-weight: 700;
     justify-content: center;
     margin-top: 10px;
+    width: 100%;
+    position: relative;
 }
 
 .pagination-arrow {
@@ -12,17 +14,13 @@
     cursor: pointer;
     color: #fff;
     background-color: rgb(104, 104, 104);
+    padding: 5px;
     
     &.arrow-previous {
         border-right: 0;
-        border-radius: 5px 0 0 5px;
-        padding: 5px;
+        // border-radius: 5px 0 0 5px;
     }
     
-    &.arrow-next {
-        border-radius: 0 5px 5px 0;
-        padding: 5px;
-    }
 
     &.disabled-arrow {
         cursor: default;
@@ -38,7 +36,7 @@
     width: 2rem;
     text-align: center;
     border-right: 0;
-    background: rgb(104, 104, 104);
+    background: #757575;
 
     // &:nth-child(even) {
     //     background-color: #747474;
@@ -47,4 +45,15 @@
     &.current-page {
         color: #fff;
     }
+}
+
+#perPage {
+    position: absolute;
+    right: 0%;
+    background-color: rgb(104, 104, 104);
+    padding: 5px;
+    border: 1px solid #232323;
+    color: #fff;
+    font-weight: 700;
+
 }

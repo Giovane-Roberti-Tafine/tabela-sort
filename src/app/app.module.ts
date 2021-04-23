@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DemoComponent } from './pages/demo/page-component/demo.component';
 import { TableObjectComponent } from './pages/demo/components/table-object/table-object.component';
 import { TableTraditionalComponent } from './pages/demo/components/table-traditional/table-traditional.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -38,6 +38,8 @@ import { TableTraditionalComponent } from './pages/demo/components/table-traditi
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         DatePipe,

@@ -10,6 +10,7 @@ export class PaginationControlsDirective implements OnInit {
     @Input() id: string;
     @Input() maxSize: number = 7;
     @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() perPageChange: EventEmitter<number> = new EventEmitter<number>();
     pages: Page[] = [];
     constructor(private paginationService: PaginationService, private cdr: ChangeDetectorRef) {
         this.paginationService.collectionSubject$.subscribe(
@@ -21,6 +22,8 @@ export class PaginationControlsDirective implements OnInit {
     }
 
     ngOnInit() {
+        if (this.maxSize < 3) this.maxSize = 3;
+
         if (this.id === undefined) {
             this.id = '';
         }
@@ -45,6 +48,16 @@ export class PaginationControlsDirective implements OnInit {
         this.updateList();
     }
 
+    firstPage() {
+        this.setCurrent(1);
+        this.updateList();
+    }
+
+    lastPage() {
+        let inst = this.paginationService.getInstance(this.id);
+        this.setCurrent(Math.ceil(+inst.totalItems / +inst.itemsPerPage));
+    }
+
     setCurrent(page: number) {
         this.pageChange.emit(page);
     }
@@ -61,7 +74,6 @@ export class PaginationControlsDirective implements OnInit {
         let lastPage;
         let inst = this.paginationService.getInstance(this.id);
         if (inst.totalItems < 1) {
-
             lastPage = 1;
         }
         lastPage = Math.ceil(+inst.totalItems / +inst.itemsPerPage);

@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -40,24 +42,15 @@ body {
 // Estilo para tabelas ---------------------------------------
 
 .table-responsive {
-    min-width: 40%;
+    max-width: 500px;
     max-height: 250px;
     // min-height: 250px;
-    position: relative;
+    // position: relative;
     // display: flex;
     // justify-content: center;
-    overflow: auto;
+    overflow-x: auto;
     &::-webkit-scrollbar{ 
         width: 0px;
-    }
-
-    
-    
-}
-
-@media only screen and (max-width: 1100px) {
-    .table-responsive { 
-        width: 80%;
     }
 
 }

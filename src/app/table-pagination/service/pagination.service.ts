@@ -47,4 +47,5 @@ export class PaginationService {
     public getSize(id: string): any[] {
         return this.state[id]?.size;
     }
+
 }
