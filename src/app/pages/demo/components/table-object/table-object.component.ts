@@ -24,7 +24,7 @@ export class TableObjectComponent extends Tabela implements OnInit {
         id: 'custom',
         itemsPerPage: 10,
         currentPage: 1,
-        totalItems: 95
+        totalItems: 1
     };
 
     constructor(pipeDynamic: DynamicPipe, private peopleService: PeopleService) {
@@ -42,6 +42,15 @@ export class TableObjectComponent extends Tabela implements OnInit {
                 (response) => {
                     this.peoplePaginate = response['data'];
 
+                },
+                (err) => console.log(err),
+                () => {
+                    this.peopleService.getPeoples()
+                        .subscribe(
+                            (response) => {
+                                this.config.totalItems = response['count'];
+                            }
+                        );
                 }
             );
 

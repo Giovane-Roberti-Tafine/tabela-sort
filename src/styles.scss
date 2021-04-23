@@ -55,6 +55,13 @@ body {
 
 }
 
+@media only screen and (min-width: 600px) {
+    .table-responsive { 
+        min-width: 500px
+    }
+
+}
+
 table {
     width: 100%;
     height: 100%;

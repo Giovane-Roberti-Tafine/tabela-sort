@@ -67,17 +67,22 @@ export class PaginationControlsDirective implements OnInit {
     }
 
     isFirstPage(): boolean {
+        if (this.totalPages() === 1) {
+            return true;
+        }
         return this.getCurrent() === 1;
     }
 
     isLastPage(): boolean {
-        let lastPage;
-        let inst = this.paginationService.getInstance(this.id);
-        if (inst.totalItems < 1) {
-            lastPage = 1;
+        if (this.totalPages() === 1) {
+            return true;
         }
-        lastPage = Math.ceil(+inst.totalItems / +inst.itemsPerPage);
-        return lastPage === this.getCurrent();
+        return this.totalPages() === this.getCurrent();
+    }
+
+    totalPages(): number {
+        let inst = this.paginationService.getInstance(this.id);
+        return Math.ceil(+inst.totalItems / +inst.itemsPerPage);
     }
 
     private updateList() {
@@ -115,7 +120,6 @@ export class PaginationControlsDirective implements OnInit {
                         }
 
         }
-
         return list;
     }
 
