@@ -12,7 +12,7 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr *ngFor="let person of peoplePaginate$ | async | sort: 'object': 'data' | pagination: config">
+            <tr *ngFor="let person of (peoplePaginate$ | async)?.data | sort: 'object' | pagination: config">
                 <td *ngFor="let coluna of configuracaoTabela.colunas" [innerHTML]="obterValor(person, coluna)"
                     [style.color]="obterColor(person, coluna)" [ngClass]="obterClass(person, coluna)">
                 </td>
@@ -56,7 +56,7 @@
             <ng-template #disabledLast> >> </ng-template>
         </div>
 
-        <select name="perPage" id="perPage" [(ngModel)]="config.itemsPerPage" (change)="getPeoplesPaginate()">
+        <select name="perPage" id="perPage" [(ngModel)]="config.itemsPerPage" (change)="p.setCurrent(1)">
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option>

@@ -40,9 +40,9 @@ export class TableTraditionalComponent extends Tabela implements OnInit {
         this.peopleService.getPeoples()
             .subscribe(
                 (response) => {
-                    this.people = response["data"];
+                    this.people = response.data;
 
-                    this.config.totalItems = response['count'];
+                    this.config.totalItems = response.count;
                 }
             );
     }

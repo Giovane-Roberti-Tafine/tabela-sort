@@ -7,6 +7,7 @@ import { People } from 'src/app/models/people.model';
 import { DynamicPipe } from 'src/app/pipes/dynamic.pipe';
 import { PeopleService } from 'src/app/services/people.service';
 import { PaginationPipeArgs } from 'src/app/table-pagination/model/pagination-pipe.model';
+import { Response } from "../../../../models/reponse.model";
 
 @Component({
     selector: 'app-table-object',
@@ -18,7 +19,7 @@ export class TableObjectComponent extends Tabela implements OnInit {
 
     public peoplePaginate: People[] = [];
 
-    public peoplePaginate$: Observable<People[]>;
+    public peoplePaginate$: Observable<Response<People>>;
 
     public config: PaginationPipeArgs = {
         id: 'custom',
@@ -40,7 +41,7 @@ export class TableObjectComponent extends Tabela implements OnInit {
         this.peopleService.getPeoplesPaginate(+this.config.currentPage, +this.config.itemsPerPage)
             .subscribe(
                 (response) => {
-                    this.peoplePaginate = response['data'];
+                    this.peoplePaginate = response.data;
 
                 },
                 (err) => console.log(err),
@@ -48,7 +49,7 @@ export class TableObjectComponent extends Tabela implements OnInit {
                     this.peopleService.getPeoples()
                         .subscribe(
                             (response) => {
-                                this.config.totalItems = response['count'];
+                                this.config.totalItems = response.count;
                             }
                         );
                 }

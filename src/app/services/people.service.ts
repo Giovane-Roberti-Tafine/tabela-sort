@@ -5,6 +5,7 @@ import { PeopleBirthdate } from '../enums/people-birthdate.enum';
 import { People } from '../models/people.model';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { Response } from "../models/reponse.model";
 
 @Injectable({
     providedIn: 'root'
@@ -39,17 +40,17 @@ export class PeopleService {
         return '';
     }
 
-    getPeoples(): Observable<People[]> {
-        return this.http.get<People[]>(this.apiPeople)
+    getPeoples(): Observable<Response<People>> {
+        return this.http.get<Response<People>>(this.apiPeople)
             .pipe(
-                catchError(this.handleError<People[]>('get Peoples', []))
+                catchError(this.handleError<Response<People>>('get Peoples', { data: [], count: 0 }))
             );
     }
 
-    getPeoplesPaginate(currentPage: number, perPage: number): Observable<People[]> {
-        return this.http.get<People[]>(`${this.apiPeople}?page=${currentPage}&limit=${perPage}`)
+    getPeoplesPaginate(currentPage: number, perPage: number): Observable<Response<People>> {
+        return this.http.get<Response<People>>(`${this.apiPeople}?page=${currentPage}&limit=${perPage}`)
             .pipe(
-                catchError(this.handleError<People[]>('get Peoples Paginate', []))
+                catchError(this.handleError<Response<People>>('get Peoples Paginate', { data: [], count: 0 }))
             );
     }
 

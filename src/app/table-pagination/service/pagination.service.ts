@@ -41,7 +41,7 @@ export class PaginationService {
     }
 
     public getInstance(id: string): PaginationPipeArgs {
-        return this.state[id]?.instance;
+        return this.state[id]?.instance || null;
     }
 
     public getSize(id: string): any[] {
