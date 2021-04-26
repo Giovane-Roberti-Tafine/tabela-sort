@@ -39,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     providers: [
         DatePipe,
@@ -49,7 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ColorPipe,
         InnerPipe,
         // PaginationService,
-        PaginationPipe
+        PaginationPipe,
     ],
     bootstrap: [AppComponent]
 })
