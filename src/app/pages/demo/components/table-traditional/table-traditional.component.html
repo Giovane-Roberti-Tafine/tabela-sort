@@ -25,7 +25,7 @@
         </tfoot>
     </table>
 </div>
-<pagination-directive #p2="paginationService" [id]="config.id" (pageChange)="config.currentPage = $event">
+<pagination-template #p2="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
     <div class="custom-pagination">
         <div class="pagination-previous" [class.disabled]="p2.isFirstPage()">
             <a *ngIf="!p2.isFirstPage()" (click)="p2.previous()">
@@ -44,4 +44,4 @@
         </div>
     </div>
 
-</pagination-directive>
+</pagination-template>

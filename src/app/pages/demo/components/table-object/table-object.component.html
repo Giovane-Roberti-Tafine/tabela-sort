@@ -22,7 +22,7 @@
     </table>
 </div>
 
-<pagination-directive #p="paginationService" [maxSize]="2" [id]="config.id" (pageChange)="getPeoplesPaginate($event)">
+<pagination-template #p="paginationApi" [maxSize]="2" [id]="config.id" (pageChange)="getPeoplesPaginate($event)">
     <div class="custom-pagination">
         <div class="pagination-arrow" [class.disabled-arrow]="p.isFirstPage()">
             <a *ngIf="!p.isFirstPage(); else disabledFirst" (click)="p.firstPage()">
@@ -49,7 +49,7 @@
             <ng-template #disabledNext>
                 > </ng-template>
         </div>
-        <div class="pagination-arrow arrow-next" [class.disabled-arrow]="p.isLastPage()">
+        <div class="pagination-arrow" [class.disabled-arrow]="p.isLastPage()">
             <a *ngIf="!p.isLastPage(); else disabledLast" (click)="p.lastPage()">
                 >>
             </a>
@@ -63,4 +63,4 @@
             <option value="50">50</option>
         </select>
     </div>
-</pagination-directive>
+</pagination-template>

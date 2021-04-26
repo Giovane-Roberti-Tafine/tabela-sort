@@ -3,8 +3,8 @@ import { Page } from '../model/page.model';
 import { PaginationService } from '../service/pagination.service';
 
 @Directive({
-    selector: 'pagination-directive,[pagination-directive]',
-    exportAs: 'paginationService'
+    selector: 'pagination-template,[pagination-template]',
+    exportAs: 'paginationApi'
 })
 export class PaginationControlsDirective implements OnInit {
     @Input() id: string;

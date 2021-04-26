@@ -12,100 +12,14 @@ import { PeopleService } from './services/people.service';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    // title = 'tabela';
-    // public people: People[] = [
-    //     { firstName: 'James', lastName: 'Dean', birthDate: new Date(1995, 5, 1) },
-    //     { firstName: 'John', lastName: 'Smith', birthDate: new Date() },
-    //     { firstName: 'Jane', lastName: 'Doe', birthDate: new Date(2011, 1, 1) },
-    //     { firstName: 'Terry', lastName: 'Rundle', birthDate: new Date(2021, 6, 12) },
-    //     { firstName: 'Barry', lastName: 'White', birthDate: new Date(1996, 2, 24) },
-    // ];
-
-    // public peoplePaginate: People[] = [];
-
-    // public configuracaoTabela = ConfiguracaoTabela['people'];
-
-    // public spinner = false;
-
-    // public collection: string[] = [];
-    // public currentPage: number = 1;
-
-    // public config: any = {
-    //     id: 'custom',
-    //     itemsPerPage: 10,
-    //     currentPage: 3
-    // };
-
-    // public config2: any = {
-    //     id: 'Hey',
-    //     itemsPerPage: 10,
-    //     currentPage: 1
-    // };
 
     constructor() {
-        // console.log(this.createPageArray(1, 10, 60, 5));
 
-        // for (let i = 1; i <= 100; i++) {
-        //     this.collection.push(`item ${i}`);
-        // }
     }
 
     ngOnInit(): void {
-        // this.getPeoples();
-        // this.getPeoplesPaginate();
-        // this.getPage(1);
+
     }
-
-    // private getPeoples(): void {
-    //     this.spinner = true;
-    //     this.peopleService.getPeoples()
-    //         .subscribe(
-    //             (response) => {
-    //                 this.spinner = false;
-    //                 console.log(response);
-    //                 this.people = response["data"];
-
-    //                 this.config.totalItems = response['count'];
-    //             }
-    //         );
-    // }
-
-    // private getPeoplesPaginate(): void {
-    //     this.spinner = true;
-    //     this.peopleService.getPeoplesPaginate(this.config.currentPage, this.config.itemsPerPage)
-    //         .subscribe(
-    //             (response) => {
-    //                 this.spinner = false;
-    //                 this.peoplePaginate = response['data'];
-    //                 console.log(response['data']);
-    //             }
-    //         );
-    // }
-
-    // public getPage(page: number): string[] {
-    //     this.currentPage = page;
-    //     this.collection = [];
-    //     for (let i = 1; i <= 10; i++) {
-    //         this.collection.push(`item ${i + ((page * 10) - 10)}`);
-    //     }
-
-    //     return this.collection;
-    // }
-
-    // public obterValor(person: People, prop: Colunas): string {
-    //     return this.getValue<People>(person, prop);
-    // }
-
-    // public obterColor(person: People, prop: Colunas) {
-    //     return this.getColor<People>(person, prop);
-    // }
-
-    // public obterClass(person: People, prop: Colunas): string {
-    //     return this.getClass<People>(person, prop);
-    // }
-
-    // get colunaBirthDate() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Birth Date'); }
-    // get colunaTrafficLight() { return this.configuracaoTabela.colunas.find(el => el.titulo === 'Traffic Light'); }
 
     private createPageArray(currentPage: number, itemsPerPage: number, totalItems: number, paginationRange: number): any[] {
         // paginationRange could be a string if passed from attribute, so cast to number.
@@ -169,4 +83,5 @@ export class AppComponent implements OnInit {
             return i;
         }
     }
+
 }

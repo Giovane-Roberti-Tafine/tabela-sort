@@ -1,67 +1,7 @@
-<!-- <div class="table-responsive">
-        <table>
-            <thead>
-                <th [attr.colSpan]="configuracaoTabela.colunas.length">Table Tradicional</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Traffic Light</th>
-                    <th sort="firstName" nameTable="trad" order="asc" float="left">
-                        First Name
-                    </th>
-                    <th sort="lastName" nameTable="trad" float="right">Last Name</th>
-                    <th sort="birthDate" nameTable="trad" order="desc">Birth Date</th>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr *ngFor="let person of people | sort: 'trad' | pagination: config2">
-                    <td [ngClass]="obterClass(person, colunaTrafficLight)"></td>
-                    <td>{{ person.firstName }}</td>
-                    <td>{{ person.lastName }}</td>
-                    <td [style.color]="obterColor(person, colunaBirthDate)"
-                        [innerHTML]="obterValor(person, colunaBirthDate)">{{ person.birthDate | date:'dd/MM/yyyy' }}
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <pagination-directive #p2="paginationService" [id]="config2.id" (pageChange)="config2.currentPage = $event">
-        <div class="custom-pagination">
-            <div class="pagination-previous" [class.disabled]="p2.isFirstPage()">
-                <a *ngIf="!p2.isFirstPage()" (click)="p2.previous()">
-                    < </a>
-            </div>
-            <div *ngFor="let page2 of p2.pages" [class.current]="p2.getCurrent() === page2.value">
-                <a (click)="p2.setCurrent(page2.value)" *ngIf="p2.getCurrent() !== page2.value">
-                    <span>{{ page2.label }}</span>
-                </a>
-                <div *ngIf="p2.getCurrent() === page2.value">
-                    <span>{{ page2.label }}</span>
-                </div>
-            </div>
-            <div class="pagination-next" [class.disabled]="p2.isLastPage()">
-                <a *ngIf="!p2.isLastPage()" (click)="p2.next()"> > </a>
-            </div>
-        </div>
-        {{config2.currentPage}}
-    </pagination-directive> -->
-
-
-
-<!-- <div class="list">
-        <ul>
-            <li
-                *ngFor="let item of collection | paginate: { id: 'server', itemsPerPage: 10, currentPage: currentPage, totalItems: 100 }">
-                {{ item }}</li>
-        </ul>
-
-        <div class="has-text-centered">
-            <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-        </div>
-    </div> -->
-
-<!-- <div class="spinner" *ngIf="spinner">
-        <i class="fas fa-spinner fa-pulse"></i>
-    </div> -->
-
+<div class="bar-menu">
+    <h2 class="menu-name">Table</h2>
+    <a routerLink="demo" routerLinkActive="link-active">Demo</a>
+    <a href="">Table-Sort</a>
+    <a href="">Table-Pagination</a>
+</div>
 <router-outlet></router-outlet>
