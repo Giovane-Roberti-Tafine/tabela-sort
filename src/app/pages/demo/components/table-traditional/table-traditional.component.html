@@ -25,7 +25,7 @@
         </tfoot>
     </table>
 </div>
-<pagination-controls [id]="config.id" [maxSize]="2" [autoHide]="false" [responsive]="false" [previousLabel]="'previous'"
-    [nextLabel]="'next'" [firstLabel]="'First Page'" [lastLabel]="'Last Page'"
-    [screenReaderPaginationLabel]="'Paginação'" [screenReaderPageLabel]="'Pagina'"
+<pagination-controls [id]="config.id" [maxSize]="4" [autoHide]="false" [responsive]="true" [previousLabel]="'previous'"
+    [nextLabel]="'next'" [firstLabel]="'First Page'" [lastLabel]="'Last Page'" [directionLastFirst]="false"
+    [directionPreviousNext]="true" [screenReaderPaginationLabel]="'Paginação'" [screenReaderPageLabel]="'Pagina'"
     (pageChange)="config.currentPage = $event"></pagination-controls>

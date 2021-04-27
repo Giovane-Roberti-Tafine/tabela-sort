@@ -7,9 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PaginationControlsComponent implements OnInit {
     @Input() id: string;
-    @Input() maxSize: number = 7;
+    @Input() maxSize: number = 3;
 
     @Input() directionLastFirst: boolean = true;
+    @Input() directionPreviousNext: boolean = true;
     @Input() autoHide: boolean = false;
     @Input() responsive: boolean = false;
 

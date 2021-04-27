@@ -1,7 +1,7 @@
 <pagination-template #p="paginationApi" [id]="id" [maxSize]="maxSize" (pageChange)="pageChange.emit($event)">
     <ul class="pagination" role="navigation" [attr.aria-label]="screenReaderPaginationLabel"
         [class.responsive]="responsive" *ngIf="!(autoHide && p.pages.length <= 1)">
-        <li class="pagination-arrow" [class.disabled-arrow]="p.isFirstPage()">
+        <li class="pagination-arrow" *ngIf="directionLastFirst" [class.disabled-arrow]="p.isFirstPage()">
             <a tabindex="0" *ngIf="!p.isFirstPage(); else disabledFirst" (click)="p.firstPage()"
                 (keyup.enter)="p.firstPage()">
                 {{ firstLabel }}
@@ -10,7 +10,8 @@
                 {{ firstLabel }}
             </ng-template>
         </li>
-        <li class="pagination-arrow arrow-previous" [class.disabled-arrow]="p.isFirstPage()">
+        <li class="pagination-arrow arrow-previous" *ngIf="directionPreviousNext"
+            [class.disabled-arrow]="p.isFirstPage()">
             <a tabindex="0" *ngIf="!p.isFirstPage(); else disabledPrevious" (keyup.enter)="p.previous()"
                 (click)="p.previous()" [attr.aria-label]="previousLabel + ' ' + screenReaderPageLabel">
                 {{ previousLabel }}
@@ -19,6 +20,11 @@
                 {{ previousLabel }}
             </ng-template>
         </li>
+
+        <li class="small-screen">
+            {{ p.getCurrent() }} / {{ p.totalPages() }}
+        </li>
+
         <li [class.current-page]="p.getCurrent() === page.value" *ngFor="let page of p.pages" class="pagination-range">
             <a tabindex="0" (keyup.enter)="p.setCurrent(page.value)" (click)="p.setCurrent(page.value)"
                 *ngIf="p.getCurrent() !== page.value">
@@ -28,7 +34,8 @@
                 <span>{{ page.label }}</span>
             </ng-container>
         </li>
-        <li class="pagination-arrow pagination-next" [class.disabled]="p.isLastPage()">
+        <li class="pagination-arrow pagination-next" *ngIf="directionPreviousNext"
+            [class.disabled-arrow]="p.isLastPage()">
             <a tabindex="0" *ngIf="!p.isLastPage(), else disabledNext" (keyup.enter)="p.next()" (click)="p.next()"
                 [attr.aria-label]="nextLabel + ' ' + screenReaderPageLabel">
                 {{ nextLabel }}
@@ -37,7 +44,7 @@
                 {{ nextLabel }}
             </ng-template>
         </li>
-        <li class="pagination-arrow" [class.disabled]="p.isLastPage()">
+        <li class="pagination-arrow" *ngIf="directionLastFirst" [class.disabled]="p.isLastPage()">
             <a tabindex="0" *ngIf="!p.isLastPage(); else disabledLast" (click)="p.lastPage()"
                 (keyup.enter)="p.lastPage()">
                 {{ lastLabel }}

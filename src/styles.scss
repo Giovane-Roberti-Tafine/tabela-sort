@@ -6,13 +6,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
+}
 
 html {
     // width: 100%;
     height: 100%;
     background-color: rgb(88, 88, 88);
-    
+
 }
 
 body {
@@ -50,14 +50,15 @@ body {
     // display: flex;
     // justify-content: center;
     overflow-x: auto;
-    &::-webkit-scrollbar{ 
+
+    &::-webkit-scrollbar {
         width: 0px;
     }
 
 }
 
 @media only screen and (min-width: 600px) {
-    .table-responsive { 
+    .table-responsive {
         min-width: 500px
     }
 
@@ -70,7 +71,7 @@ table {
     border-collapse: collapse;
     font-family: Arial, Helvetica, sans-serif;
     padding: 3px;
-    
+
 
     thead {
         th {
@@ -78,7 +79,7 @@ table {
             color: rgb(233, 233, 233);
         }
     }
-    
+
     tbody {
         tr {
 
@@ -92,14 +93,14 @@ table {
                 fill: rgb(233, 233, 233);
                 white-space: nowrap;
 
-                
+
                 &:not(:last-child) {
                     // border-right: 1px solid rgb(104, 104, 104);
                     box-shadow: inset -1px 0px 0px rgb(104, 104, 104),
                 }
             }
         }
-        
+
     }
 
     tfoot {
@@ -107,13 +108,13 @@ table {
         text-align: center;
         background: rgb(104, 104, 104);
         font-size: 0.85rem;
-        
+
         tr {
             &:nth-child(even) {
                 background-color: #747474;
             }
-            
-            
+
+
             td {
                 padding: 5px;
                 color: rgb(233, 233, 233);
@@ -133,11 +134,22 @@ table {
     background-color: #fff;
     margin-top: 0.25rem;
 
-    &.isSame { background-color: #109890; }
-    &.isBirthDay { background-color: #453070; }
-    &.isBefore { background-color: #232323; }
-    &.isAfter { background-color: #505050; }
-    
+    &.isSame {
+        background-color: #109890;
+    }
+
+    &.isBirthDay {
+        background-color: #453070;
+    }
+
+    &.isBefore {
+        background-color: #232323;
+    }
+
+    &.isAfter {
+        background-color: #505050;
+    }
+
 }
 
 // -----------------------------------------------------------
