@@ -25,23 +25,7 @@
         </tfoot>
     </table>
 </div>
-<pagination-template #p2="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
-    <div class="custom-pagination">
-        <div class="pagination-previous" [class.disabled]="p2.isFirstPage()">
-            <a *ngIf="!p2.isFirstPage()" (click)="p2.previous()">
-                < </a>
-        </div>
-        <div *ngFor="let page2 of p2.pages" [class.current]="p2.getCurrent() === page2.value">
-            <a (click)="p2.setCurrent(page2.value)" *ngIf="p2.getCurrent() !== page2.value">
-                <span>{{ page2.label }}</span>
-            </a>
-            <div *ngIf="p2.getCurrent() === page2.value">
-                <span>{{ page2.label }}</span>
-            </div>
-        </div>
-        <div class="pagination-next" [class.disabled]="p2.isLastPage()">
-            <a *ngIf="!p2.isLastPage()" (click)="p2.next()"> > </a>
-        </div>
-    </div>
-
-</pagination-template>
+<pagination-controls [id]="config.id" [maxSize]="2" [autoHide]="false" [responsive]="false" [previousLabel]="'previous'"
+    [nextLabel]="'next'" [firstLabel]="'First Page'" [lastLabel]="'Last Page'"
+    [screenReaderPaginationLabel]="'Paginação'" [screenReaderPageLabel]="'Pagina'"
+    (pageChange)="config.currentPage = $event"></pagination-controls>

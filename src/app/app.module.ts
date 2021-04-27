@@ -18,6 +18,7 @@ import { DemoComponent } from './pages/demo/page-component/demo.component';
 import { TableObjectComponent } from './pages/demo/components/table-object/table-object.component';
 import { TableTraditionalComponent } from './pages/demo/components/table-traditional/table-traditional.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginationControlsComponent } from './table-pagination/component/pagination-controls/pagination-controls.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         PaginationControlsDirective,
         DemoComponent,
         TableObjectComponent,
-        TableTraditionalComponent
+        TableTraditionalComponent,
+        PaginationControlsComponent
     ],
     imports: [
         BrowserModule,
