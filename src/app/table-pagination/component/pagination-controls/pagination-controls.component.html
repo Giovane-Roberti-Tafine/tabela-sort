@@ -44,7 +44,7 @@
                 {{ nextLabel }}
             </ng-template>
         </li>
-        <li class="pagination-arrow" *ngIf="directionLastFirst" [class.disabled]="p.isLastPage()">
+        <li class="pagination-arrow" *ngIf="directionLastFirst" [class.disabled-arrow]="p.isLastPage()">
             <a tabindex="0" *ngIf="!p.isLastPage(); else disabledLast" (click)="p.lastPage()"
                 (keyup.enter)="p.lastPage()" [attr.aria-label]="lastLabel + ' ' + screenReaderPageLabel">
                 {{ lastLabel }}
@@ -53,7 +53,7 @@
                 {{ lastLabel }}
             </ng-template>
         </li>
-        <li>
+        <li *ngIf="rangePerPage.length > 1">
             <select class="range-per-page" (change)="setPerPage($event)">
                 <option [value]="op" *ngFor="let op of rangePerPage">{{op}}</option>
             </select>

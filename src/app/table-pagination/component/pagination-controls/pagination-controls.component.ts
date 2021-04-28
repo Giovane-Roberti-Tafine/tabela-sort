@@ -19,8 +19,8 @@ export class PaginationControlsComponent implements OnInit {
 
     @Input() previousLabel: string = '<';
     @Input() nextLabel: string = '>';
-    @Input() lastLabel: string = '<<';
-    @Input() firstLabel: string = '>>';
+    @Input() lastLabel: string = '>>';
+    @Input() firstLabel: string = '<<';
 
     @Input() screenReaderPaginationLabel: string = 'Paginação';
     @Input() screenReaderPageLabel: string = 'Pagina';
@@ -30,6 +30,7 @@ export class PaginationControlsComponent implements OnInit {
 
     @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
     @Output() perPageChange: EventEmitter<number> = new EventEmitter<number>();
+
     constructor() { }
 
     ngOnInit(): void {

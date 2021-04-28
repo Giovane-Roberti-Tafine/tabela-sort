@@ -25,8 +25,8 @@
         </tfoot>
     </table>
 </div>
-<pagination-controls [id]="config.id" [maxSize]="4" [autoHide]="false" [responsive]="true" [previousLabel]="'previous'"
-    [nextLabel]="'next'" [firstLabel]="'First Page'" [lastLabel]="'Last Page'" [directionLastFirst]="false"
-    [rangePerPage]="[10,15,20,50]" [directionPreviousNext]="true" [screenReaderPaginationLabel]="'Paginação'"
-    [screenReaderPageLabel]="'Pagina'" (pageChange)="config.currentPage = $event"
-    (perPageChange)="config.itemsPerPage = $event"></pagination-controls>
+<pagination-controls [id]="config.id" [maxSize]="pagination.maxSize" [autoHide]="pagination.autoHide"
+    [responsive]="pagination.responsive" [previousLabel]="pagination.previousLabel" [nextLabel]="pagination.nextLabel"
+    [firstLabel]="pagination.firstLabel" [lastLabel]="pagination.lastLabel" [rangePerPage]="pagination.rangePerPage"
+    [directionLastFirst]="pagination.directionLastFirst" [directionPreviousNext]="pagination.directionPreviousNext"
+    (pageChange)="config.currentPage = $event" (perPageChange)="config.itemsPerPage = $event"></pagination-controls>
