@@ -19,8 +19,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        hljs.registerLanguage('typescript', typescript);
-        hljs.highlightBlock(this.codeElement.nativeElement);
+        // hljs.registerLanguage('typescript', typescript);
+        // hljs.highlightBlock(this.codeElement.nativeElement);
 
     }
 

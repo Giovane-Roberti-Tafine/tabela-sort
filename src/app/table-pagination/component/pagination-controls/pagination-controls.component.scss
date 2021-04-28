@@ -1,7 +1,6 @@
 .pagination {
     margin-left: 0;
     margin-bottom: 1rem;
-    border: 1px solid red;
 
     .small-screen {
         display: none;
@@ -39,6 +38,11 @@
         color: #101010;
         cursor: default;
     }
+}
+
+.range-per-page {
+    margin-left: 1rem;
+    color: #101010;
 }
 
 

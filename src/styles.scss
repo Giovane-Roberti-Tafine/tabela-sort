@@ -22,7 +22,7 @@ body {
     // border: 1px solid blue;
 }
 
-// Estilos para component tabela-sort ------------------------
+// Estilos para component table-sort ------------------------
 .tabela-sort-icon-asc {
     width: 1rem;
     height: 1rem;
@@ -77,6 +77,7 @@ table {
         th {
             padding: 5px;
             color: rgb(233, 233, 233);
+            background-color: rgb(88, 88, 88);
         }
     }
 
@@ -168,3 +169,19 @@ table {
     background-color: rgb(35, 35, 35, 0.5);
     color: #fff;
 }
+
+// Estilos para component table-pagination -------------------
+
+.pagination-range {
+    &.current-page {
+        background-color: #453070;
+    }
+
+}
+
+.range-per-page {
+    padding: 0.25rem 0.1rem;
+    border: 1px solid #101010;
+}
+
+// -----------------------------------------------------------

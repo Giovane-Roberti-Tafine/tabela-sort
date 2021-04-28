@@ -27,5 +27,6 @@
 </div>
 <pagination-controls [id]="config.id" [maxSize]="4" [autoHide]="false" [responsive]="true" [previousLabel]="'previous'"
     [nextLabel]="'next'" [firstLabel]="'First Page'" [lastLabel]="'Last Page'" [directionLastFirst]="false"
-    [directionPreviousNext]="true" [screenReaderPaginationLabel]="'Paginação'" [screenReaderPageLabel]="'Pagina'"
-    (pageChange)="config.currentPage = $event"></pagination-controls>
+    [rangePerPage]="[10,15,20,50]" [directionPreviousNext]="true" [screenReaderPaginationLabel]="'Paginação'"
+    [screenReaderPageLabel]="'Pagina'" (pageChange)="config.currentPage = $event"
+    (perPageChange)="config.itemsPerPage = $event"></pagination-controls>

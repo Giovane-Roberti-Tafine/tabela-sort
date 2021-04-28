@@ -24,19 +24,20 @@
 
 <pagination-template #p="paginationApi" [maxSize]="2" [id]="config.id" (pageChange)="getPeoplesPaginate($event)">
     <div class="custom-pagination">
-        <div class="pagination-arrow" [class.disabled-arrow]="p.isFirstPage()">
+        <div class="custom-pagination-arrow" [class.disabled-arrow]="p.isFirstPage()">
             <a *ngIf="!p.isFirstPage(); else disabledFirst" (click)="p.firstPage()">
                 << </a>
                     <ng-template #disabledFirst>
                         << </ng-template>
         </div>
-        <div class="pagination-arrow arrow-previous" [class.disabled-arrow]="p.isFirstPage()">
+        <div class="custom-pagination-arrow arrow-previous" [class.disabled-arrow]="p.isFirstPage()">
             <a *ngIf="!p.isFirstPage(); else disabledPrevious" (click)="p.previous()">
                 < </a>
                     <ng-template #disabledPrevious>
                         < </ng-template>
         </div>
-        <div *ngFor="let page of p.pages" class="pagination-range" [class.current-page]="p.getCurrent() === page.value">
+        <div *ngFor="let page of p.pages" class="custom-pagination-range"
+            [class.current-page]="p.getCurrent() === page.value">
             <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
                 <span>{{ page.label }}</span>
             </a>
@@ -44,19 +45,20 @@
                 <span>{{ page.label }}</span>
             </div>
         </div>
-        <div class="pagination-arrow arrow-next" [class.disabled-arrow]="p.isLastPage()">
+        <div class="custom-pagination-arrow arrow-next" [class.disabled-arrow]="p.isLastPage()">
             <a *ngIf="!p.isLastPage(); else disabledNext" (click)="p.next()"> > </a>
             <ng-template #disabledNext>
                 > </ng-template>
         </div>
-        <div class="pagination-arrow" [class.disabled-arrow]="p.isLastPage()">
+        <div class="custom-pagination-arrow" [class.disabled-arrow]="p.isLastPage()">
             <a *ngIf="!p.isLastPage(); else disabledLast" (click)="p.lastPage()">
                 >>
             </a>
             <ng-template #disabledLast> >> </ng-template>
         </div>
 
-        <select name="perPage" id="perPage" [(ngModel)]="config.itemsPerPage" (change)="p.setCurrent(1)">
+        <select name="perPage" class="custom-range-per-page" [(ngModel)]="config.itemsPerPage"
+            (change)="p.setCurrent(1)">
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option>
